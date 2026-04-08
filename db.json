@@ -1,0 +1,244 @@
+[
+    {
+        "Id": "7cf4f3cbc4c6788c96a77f27af5d045f42e709e5f9f0c21860898227e1be4961",
+        "Created": "2026-04-08T11:31:05.222073705Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "postgres"
+        ],
+        "State": {
+            "Status": "created",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 128,
+            "Error": "failed to set up container networking: driver failed programming external connectivity on endpoint openplaud-db (2a13463e8206afb92b28f2542a6fcb013f191cb54f3fbe134f0bb67bcf7bd430): Bind for 0.0.0.0:5432 failed: port is already allocated",
+            "StartedAt": "0001-01-01T00:00:00Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+        "ResolvConfPath": "/var/lib/docker/containers/7cf4f3cbc4c6788c96a77f27af5d045f42e709e5f9f0c21860898227e1be4961/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/7cf4f3cbc4c6788c96a77f27af5d045f42e709e5f9f0c21860898227e1be4961/hostname",
+        "HostsPath": "/var/lib/docker/containers/7cf4f3cbc4c6788c96a77f27af5d045f42e709e5f9f0c21860898227e1be4961/hosts",
+        "LogPath": "/var/lib/docker/containers/7cf4f3cbc4c6788c96a77f27af5d045f42e709e5f9f0c21860898227e1be4961/7cf4f3cbc4c6788c96a77f27af5d045f42e709e5f9f0c21860898227e1be4961-json.log",
+        "Name": "/openplaud-db",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "openplaud_pgdata:/var/lib/postgresql/data:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "openplaud_default",
+            "PortBindings": {
+                "5432/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "5432"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "openplaud_pgdata",
+                "Source": "/var/lib/docker/volumes/openplaud_pgdata/_data",
+                "Destination": "/var/lib/postgresql/data",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "7cf4f3cbc4c6",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "5432/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "POSTGRES_DB=openplaud",
+                "POSTGRES_USER=postgres",
+                "POSTGRES_PASSWORD=postgres",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GOSU_VERSION=1.19",
+                "LANG=en_US.utf8",
+                "PG_MAJOR=16",
+                "PG_VERSION=16.13",
+                "PG_SHA256=dc2ddbbd245c0265a689408e3d2f2f3f9ba2da96bd19318214b313cdd9797287",
+                "DOCKER_PG_LLVM_DEPS=llvm19-dev \t\tclang19",
+                "PGDATA=/var/lib/postgresql/data"
+            ],
+            "Cmd": [
+                "postgres"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "pg_isready -U postgres"
+                ],
+                "Interval": 10000000000,
+                "Timeout": 5000000000,
+                "Retries": 5
+            },
+            "Image": "postgres:16-alpine",
+            "Volumes": {
+                "/var/lib/postgresql/data": {}
+            },
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "4a1bd1431b25251dc9caefae1845c9426f246daa2b853eab4d29b382cf52dfd2",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "openplaud",
+                "com.docker.compose.project.config_files": "C:\\Users\\evert\\.gemini\\antigravity\\scratch\\openplaud\\docker-compose.yml",
+                "com.docker.compose.project.working_dir": "C:\\Users\\evert\\.gemini\\antigravity\\scratch\\openplaud",
+                "com.docker.compose.replace": "openplaud-db",
+                "com.docker.compose.service": "db",
+                "com.docker.compose.version": "5.1.0"
+            },
+            "StopSignal": "SIGINT",
+            "StopTimeout": 1
+        },
+        "NetworkSettings": {
+            "SandboxID": "",
+            "SandboxKey": "",
+            "Ports": {},
+            "Networks": {}
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:60b180625695e90b6e450405d5f0bcb74bc8c52c65d1cd11aeb3da46cac06dd8",
+            "size": 3054,
+            "annotations": {
+                "com.docker.official-images.bashbrew.arch": "amd64",
+                "org.opencontainers.image.base.digest": "sha256:59855d3dceb3ae53991193bd03301e082b2a7faa56a514b03527ae0ec2ce3a95",
+                "org.opencontainers.image.base.name": "alpine:3.23",
+                "org.opencontainers.image.created": "2026-02-26T19:27:47Z",
+                "org.opencontainers.image.revision": "31041e40d9b06ce075f5edd767243e53efb5ee62",
+                "org.opencontainers.image.source": "https://github.com/docker-library/postgres.git#31041e40d9b06ce075f5edd767243e53efb5ee62:16/alpine3.23",
+                "org.opencontainers.image.url": "https://hub.docker.com/_/postgres",
+                "org.opencontainers.image.version": "16.13-alpine3.23"
+            },
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]
