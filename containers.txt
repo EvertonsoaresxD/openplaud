@@ -1,0 +1,5 @@
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS                                     PORTS                                         NAMES
+4788d43f0b12   openplaud-app            "./docker-entrypoint…"   10 minutes ago   Up Less than a second (health: starting)   0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp   openplaud-app
+bb0c7ff7aff6   postgres:16-alpine       "docker-entrypoint.s…"   10 minutes ago   Up 3 minutes (healthy)                     5432/tcp                                      openplaud-db
+db7507d9f406   redis:7-alpine           "docker-entrypoint.s…"   7 weeks ago      Up 15 minutes (healthy)                    0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp   lobe-redis
+538bd0a4b459   pgvector/pgvector:pg17   "docker-entrypoint.s…"   7 weeks ago      Up 15 minutes (healthy)                    0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp   lobe-postgres

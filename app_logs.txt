@@ -1,0 +1,383 @@
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ESERVFAIL
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 3,
+openplaud-app  |     code: "ESERVFAIL"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | ❌ Migration failed: 134 | function cachedError(xs) {
+openplaud-app  | 135 |   if (originCache.has(xs))
+openplaud-app  | 136 |     return originCache.get(xs);
+openplaud-app  | 137 |   const x = Error.stackTraceLimit;
+openplaud-app  | 138 |   Error.stackTraceLimit = 4;
+openplaud-app  | 139 |   originCache.set(xs, new Error);
+openplaud-app  |                             ^
+openplaud-app  | DNSException: getaddrinfo ENOTFOUND
+openplaud-app  |  syscall: "getaddrinfo",
+openplaud-app  |    errno: 4,
+openplaud-app  |     code: "ENOTFOUND"
+openplaud-app  | 
+openplaud-app  |       at cachedError (/app/migrate-idempotent.js:139:23)
+openplaud-app  |       at new Query (/app/migrate-idempotent.js:33:84)
+openplaud-app  |       at sql2 (/app/migrate-idempotent.js:1618:70)
+openplaud-app  |       at /app/migrate-idempotent.js:5582:17
+openplaud-app  | 
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
