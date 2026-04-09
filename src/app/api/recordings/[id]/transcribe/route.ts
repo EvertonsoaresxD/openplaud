@@ -6,6 +6,10 @@ import { apiCredentials, recordings, transcriptions } from "@/db/schema";
 import { auth } from "@/lib/auth";
 import { decrypt } from "@/lib/encryption";
 import { createUserStorageProvider } from "@/lib/storage/factory";
+import {
+    getResponseFormat,
+    parseTranscriptionResponse,
+} from "@/lib/transcription/format";
 
 export async function POST(
     request: Request,
@@ -103,28 +107,17 @@ export async function POST(
             type: contentType,
         });
 
-        // Transcribe with verbose JSON to get language detection
+        const model = credentials.defaultModel || "whisper-1";
+        const responseFormat = getResponseFormat(model);
+
         const transcription = await openai.audio.transcriptions.create({
             file: audioFile,
-            model: credentials.defaultModel || "whisper-1",
-            response_format: "verbose_json",
+            model,
+            response_format: responseFormat,
         });
 
-        type VerboseTranscription = {
-            text: string;
-            language?: string | null;
-        };
-
-        // Extract text and detected language from response
-        const transcriptionText =
-            typeof transcription === "string"
-                ? transcription
-                : (transcription as VerboseTranscription).text;
-
-        const detectedLanguage =
-            typeof transcription === "string"
-                ? null
-                : (transcription as VerboseTranscription).language || null;
+        const { text: transcriptionText, detectedLanguage } =
+            parseTranscriptionResponse(transcription, responseFormat);
 
         // Save transcription
         const [existingTranscription] = await db
