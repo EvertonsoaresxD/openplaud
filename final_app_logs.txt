@@ -1,0 +1,64 @@
+openplaud-app  | 🚀 Starting OpenPlaud...
+openplaud-app  | ⏳ Running database migrations...
+openplaud-app  | 🔌 Connecting to database...
+openplaud-app  | 🔒 Acquiring migration lock...
+openplaud-app  | ⏳ Running migrations...
+openplaud-app  | ✅ Migrations completed in 205ms
+openplaud-app  | 🔓 Lock released
+openplaud-app  | 🚀 Starting application...
+openplaud-app  |    ▲ Next.js 16.0.7
+openplaud-app  |    - Local:         http://8150673c2c57:3000
+openplaud-app  |    - Network:       http://8150673c2c57:3000
+openplaud-app  | 
+openplaud-app  |  ✓ Starting...
+openplaud-app  |  ✓ Ready in 112ms
+openplaud-app  |  ⨯ Error: BETTER_AUTH_SECRET must be set in non-build runtime (dev/prod server)
+openplaud-app  |     at <anonymous> (.next/server/chunks/ssr/_2da6b3f2._.js:47:144479)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_2da6b3f2._.js:48:14)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at esmImport (.next/server/chunks/ssr/[turbopack]_runtime.js:228:20)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_2da6b3f2._.js:103:3292)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at esmImport (.next/server/chunks/ssr/[turbopack]_runtime.js:228:20)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_2da6b3f2._.js:216:11416)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at esmImport (.next/server/chunks/ssr/[turbopack]_runtime.js:228:20)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_fc62f15d._.js:1:14934)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at esmImport (.next/server/chunks/ssr/[turbopack]_runtime.js:228:20)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_25e6aab8._.js:1:33)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at commonJsRequire (.next/server/chunks/ssr/[turbopack]_runtime.js:249:12)
+openplaud-app  |     at <anonymous> (.next/server/chunks/ssr/_25e6aab8._.js:1:587)
+openplaud-app  |     at map (null)
+openplaud-app  |     at processTicksAndRejections (null)
+openplaud-app  |  ⨯ Error: BETTER_AUTH_SECRET must be set in non-build runtime (dev/prod server)
+openplaud-app  |     at <anonymous> (.next/server/chunks/ssr/_2da6b3f2._.js:47:144479)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_2da6b3f2._.js:48:14)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at esmImport (.next/server/chunks/ssr/[turbopack]_runtime.js:228:20)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_2da6b3f2._.js:103:3292)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at esmImport (.next/server/chunks/ssr/[turbopack]_runtime.js:228:20)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_2da6b3f2._.js:216:11416)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at esmImport (.next/server/chunks/ssr/[turbopack]_runtime.js:228:20)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_fc62f15d._.js:1:14934)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at esmImport (.next/server/chunks/ssr/[turbopack]_runtime.js:228:20)
+openplaud-app  |     at module evaluation (.next/server/chunks/ssr/_25e6aab8._.js:1:33)
+openplaud-app  |     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:715:9)
+openplaud-app  |     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:738:12)
+openplaud-app  |     at commonJsRequire (.next/server/chunks/ssr/[turbopack]_runtime.js:249:12)
+openplaud-app  |     at <anonymous> (.next/server/chunks/ssr/_25e6aab8._.js:1:587)
+openplaud-app  |     at map (null)
+openplaud-app  |     at processTicksAndRejections (null)

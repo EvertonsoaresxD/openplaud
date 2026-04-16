@@ -1,0 +1,49 @@
+[
+    {
+        "Name": "openplaud_default",
+        "Id": "f0b518156aa76e3630e3b23cc01f3d01ebe37ba648101c8d70bf1116405dd245",
+        "Created": "2026-04-08T11:18:28.611038383Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {
+            "com.docker.compose.config-hash": "97a30327b6300bfced5a85ee04868c3b162daaac327fc04d5b972f1ce2973d56",
+            "com.docker.compose.network": "default",
+            "com.docker.compose.project": "openplaud",
+            "com.docker.compose.version": "5.1.0"
+        },
+        "Containers": {},
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.19.0.0/16": {
+                        "IPsInUse": 3,
+                        "DynamicIPsAvailable": 65533
+                    }
+                }
+            }
+        }
+    }
+]
