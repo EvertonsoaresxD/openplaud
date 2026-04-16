@@ -9,6 +9,7 @@ import {
     timestamp,
     unique,
     varchar,
+    vector,
 } from "drizzle-orm/pg-core";
 import { nanoid } from "nanoid";
 
@@ -188,6 +189,38 @@ export const transcriptions = pgTable(
         ),
         // Index for querying user's transcriptions
         userIdIdx: index("transcriptions_user_id_idx").on(table.userId),
+    }),
+);
+
+// RAG (Retrieval-Augmented Generation) - Transcription Chunks
+export const transcriptionChunks = pgTable(
+    "transcription_chunks",
+    {
+        id: text("id")
+            .primaryKey()
+            .$defaultFn(() => nanoid()),
+        transcriptionId: text("transcription_id")
+            .notNull()
+            .references(() => transcriptions.id, { onDelete: "cascade" }),
+        userId: text("user_id")
+            .notNull()
+            .references(() => users.id, { onDelete: "cascade" }),
+        text: text("text").notNull(),
+        chunkIndex: integer("chunk_index").notNull(),
+        // 1536 is standard for OpenAI text-embedding-3-small, text-embedding-ada-002
+        embedding: vector("embedding", { dimensions: 1536 }).notNull(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+    },
+    (table) => ({
+        // Index for looking up chunks by transcription
+        transcriptionIdIdx: index("transcription_chunks_transcription_id_idx").on(
+            table.transcriptionId,
+        ),
+        // Vector index for efficient similarity search using HNSW
+        embeddingIndex: index("transcription_chunks_embedding_idx").using(
+            "hnsw",
+            table.embedding.op("vector_cosine_ops")
+        ),
     }),
 );
 
