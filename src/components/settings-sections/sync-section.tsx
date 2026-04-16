@@ -15,18 +15,18 @@ import { Switch } from "@/components/ui/switch";
 import { useSettings } from "@/hooks/use-settings";
 
 const syncIntervalPresets = [
-    { label: "1 minute", value: 60 * 1000 },
-    { label: "2 minutes", value: 2 * 60 * 1000 },
-    { label: "5 minutes", value: 5 * 60 * 1000 },
-    { label: "10 minutes", value: 10 * 60 * 1000 },
-    { label: "15 minutes", value: 15 * 60 * 1000 },
-    { label: "30 minutes", value: 30 * 60 * 1000 },
-    { label: "1 hour", value: 60 * 60 * 1000 },
+    { label: "1 minuto", value: 60 * 1000 },
+    { label: "2 minutos", value: 2 * 60 * 1000 },
+    { label: "5 minutos", value: 5 * 60 * 1000 },
+    { label: "10 minutos", value: 10 * 60 * 1000 },
+    { label: "15 minutos", value: 15 * 60 * 1000 },
+    { label: "30 minutos", value: 30 * 60 * 1000 },
+    { label: "1 hora", value: 60 * 60 * 1000 },
 ];
 
 const getSyncIntervalLabel = (value: number) => {
     return (
-        syncIntervalPresets.find((p) => p.value === value)?.label || "Custom"
+        syncIntervalPresets.find((p) => p.value === value)?.label || "Personalizado"
     );
 };
 
@@ -99,7 +99,7 @@ export function SyncSection() {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to save settings");
+                throw new Error("Falha ao salvar configurações");
             }
         } catch {
             if (updates.syncInterval !== undefined) {
@@ -122,7 +122,7 @@ export function SyncSection() {
                 const prev = previousValues.syncNotifications;
                 if (typeof prev === "boolean") setSyncNotifications(prev);
             }
-            toast.error("Failed to save settings. Changes reverted.");
+            toast.error("Falha ao salvar configurações. Mudanças revertidas.");
         }
     };
 
@@ -138,17 +138,17 @@ export function SyncSection() {
         <div className="space-y-6">
             <h2 className="text-lg font-semibold flex items-center gap-2">
                 <RefreshCw className="w-5 h-5" />
-                Sync Settings
+                Configurações de Sincronização
             </h2>
             <div className="space-y-4">
                 <div className="flex items-center justify-between">
                     <div className="space-y-0.5 flex-1">
                         <Label htmlFor="auto-sync" className="text-base">
-                            Enable auto-sync
+                            Ativar sincronização automática
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Automatically sync recordings from your Plaud device
-                            at regular intervals
+                            Sincronizar gravações do seu dispositivo Plaud
+                            automaticamente em intervalos regulares
                         </p>
                     </div>
                     <Switch
@@ -167,7 +167,7 @@ export function SyncSection() {
                 {autoSyncEnabled && (
                     <>
                         <div className="space-y-2">
-                            <Label htmlFor="sync-interval">Sync interval</Label>
+                            <Label htmlFor="sync-interval">Intervalo de sincronização</Label>
                             <Select
                                 value={syncInterval.toString()}
                                 onValueChange={(value) => {
@@ -199,7 +199,7 @@ export function SyncSection() {
                                 </SelectContent>
                             </Select>
                             <p className="text-xs text-muted-foreground">
-                                How often to automatically sync recordings
+                                Com que frequência sincronizar as gravações automaticamente
                             </p>
                         </div>
 
@@ -209,10 +209,10 @@ export function SyncSection() {
                                     htmlFor="sync-on-mount"
                                     className="text-base"
                                 >
-                                    Sync on app load
+                                    Sincronizar ao carregar o aplicativo
                                 </Label>
                                 <p className="text-sm text-muted-foreground">
-                                    Automatically sync when the app first loads
+                                    Sincronizar automaticamente quando o aplicativo é carregado pela primeira vez
                                 </p>
                             </div>
                             <Switch
@@ -234,10 +234,10 @@ export function SyncSection() {
                                     htmlFor="sync-on-visibility"
                                     className="text-base"
                                 >
-                                    Sync on tab visibility
+                                    Sincronizar na visibilidade da aba
                                 </Label>
                                 <p className="text-sm text-muted-foreground">
-                                    Sync when you return to the app tab
+                                    Sincronizar quando você retornar à aba do aplicativo
                                 </p>
                             </div>
                             <Switch
@@ -261,10 +261,10 @@ export function SyncSection() {
                             htmlFor="sync-notifications"
                             className="text-base"
                         >
-                            Show sync notifications
+                            Mostrar notificações de sincronização
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Display notifications when sync completes
+                            Exibir notificações quando a sincronização for concluída
                         </p>
                     </div>
                     <Switch

@@ -73,7 +73,7 @@ export function StorageSection() {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to save settings");
+                throw new Error("Falha ao salvar configurações");
             }
         } catch {
             if (updates.autoDeleteRecordings !== undefined) {
@@ -85,7 +85,7 @@ export function StorageSection() {
                 if (typeof prev === "number" || prev === null)
                     setRetentionDays(prev);
             }
-            toast.error("Failed to save settings. Changes reverted.");
+            toast.error("Falha ao salvar configurações. Mudanças revertidas.");
         }
     };
 
@@ -101,11 +101,11 @@ export function StorageSection() {
         <div className="space-y-6">
             <h2 className="text-lg font-semibold flex items-center gap-2">
                 <HardDrive className="w-5 h-5" />
-                Storage
+                Armazenamento
             </h2>
             <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                    <span className="text-muted-foreground">Type</span>
+                    <span className="text-muted-foreground">Tipo</span>
                     <span className="font-medium">
                         {storageUsage?.storageType || "Local"}
                     </span>
@@ -114,7 +114,7 @@ export function StorageSection() {
                     <>
                         <div className="flex justify-between">
                             <span className="text-muted-foreground">
-                                Total Size
+                                Tamanho Total
                             </span>
                             <span className="font-medium">
                                 {storageUsage.totalSizeMB} MB
@@ -122,7 +122,7 @@ export function StorageSection() {
                         </div>
                         <div className="flex justify-between">
                             <span className="text-muted-foreground">
-                                Recordings
+                                Gravações
                             </span>
                             <span className="font-medium">
                                 {storageUsage.totalRecordings}
@@ -131,8 +131,7 @@ export function StorageSection() {
                     </>
                 )}
                 <p className="text-xs text-muted-foreground pt-2 border-t">
-                    Storage is configured at the instance level via environment
-                    variables.
+                    O armazenamento é configurado no nível da instância através de variáveis de ambiente.
                 </p>
             </div>
 
@@ -140,11 +139,10 @@ export function StorageSection() {
                 <div className="flex items-center justify-between">
                     <div className="space-y-0.5 flex-1">
                         <Label htmlFor="auto-delete" className="text-base">
-                            Auto-delete old recordings
+                            Deletar gravações antigas automaticamente
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Automatically delete recordings older than the
-                            retention period
+                            Deletar automaticamente gravações mais antigas que o período de retenção
                         </p>
                     </div>
                     <Switch
@@ -167,7 +165,7 @@ export function StorageSection() {
                 {autoDeleteRecordings && (
                     <div className="space-y-2">
                         <Label htmlFor="retention-days">
-                            Retention period (days)
+                            Período de retenção (dias)
                         </Label>
                         <Input
                             id="retention-days"
@@ -201,8 +199,7 @@ export function StorageSection() {
                             placeholder="30"
                         />
                         <p className="text-xs text-muted-foreground">
-                            Recordings older than this will be automatically
-                            deleted (1-365 days)
+                            Gravações mais antigas que isso serão deletadas automaticamente (1-365 dias)
                         </p>
                     </div>
                 )}

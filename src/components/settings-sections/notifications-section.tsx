@@ -110,7 +110,7 @@ export function NotificationsSection() {
         if (!emailToTest) {
             setTestEmailStatus({
                 type: "error",
-                message: "Please enter an email address first",
+                message: "Por favor, insira um endereço de e-mail primeiro",
             });
             return;
         }
@@ -132,19 +132,19 @@ export function NotificationsSection() {
             if (response.ok) {
                 setTestEmailStatus({
                     type: "success",
-                    message: `Test email sent successfully to ${emailToTest}`,
+                    message: `E-mail de teste enviado com sucesso para ${emailToTest}`,
                 });
             } else {
                 setTestEmailStatus({
                     type: "error",
-                    message: data.error || "Failed to send test email",
+                    message: data.error || "Falha ao enviar e-mail de teste",
                 });
             }
         } catch (err) {
             console.error("Error sending test email:", err);
             setTestEmailStatus({
                 type: "error",
-                message: "Failed to send test email. Please try again.",
+                message: "Falha ao enviar e-mail de teste. Por favor, tente novamente.",
             });
         } finally {
             setIsSendingTestEmail(false);
@@ -163,7 +163,7 @@ export function NotificationsSection() {
         <div className="space-y-6">
             <h2 className="text-lg font-semibold flex items-center gap-2">
                 <Bell className="w-5 h-5" />
-                Notification Settings
+                Configurações de Notificação
             </h2>
             <div className="space-y-4">
                 <div className="flex items-center justify-between">
@@ -172,11 +172,10 @@ export function NotificationsSection() {
                             htmlFor="browser-notifications"
                             className="text-base"
                         >
-                            Browser notifications
+                            Notificações do navegador
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Show browser notifications for new recordings and
-                            sync events
+                            Mostrar notificações no navegador para novas gravações e eventos de sincronização
                         </p>
                     </div>
                     <Switch
@@ -193,10 +192,10 @@ export function NotificationsSection() {
                             htmlFor="email-notifications"
                             className="text-base"
                         >
-                            Email notifications
+                            Notificações por e-mail
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Send email notifications for new recordings
+                            Enviar notificações por e-mail para novas gravações
                         </p>
                     </div>
                     <Switch
@@ -210,7 +209,7 @@ export function NotificationsSection() {
                 {emailNotifications && (
                     <div className="space-y-2">
                         <Label htmlFor="notification-email">
-                            Email address
+                            Endereço de e-mail
                         </Label>
                         <Input
                             id="notification-email"
@@ -223,8 +222,8 @@ export function NotificationsSection() {
                         />
                         <p className="text-xs text-muted-foreground">
                             {userEmail && notificationEmail === userEmail
-                                ? "Using your account email. You can change this to a different address if needed."
-                                : "Email address to receive notifications"}
+                                ? "Usando o e-mail da sua conta. Você pode alterar para um endereço diferente, se necessário."
+                                : "Endereço de e-mail para receber notificações"}
                         </p>
                         <div className="flex items-center gap-2">
                             <Button
@@ -239,8 +238,8 @@ export function NotificationsSection() {
                             >
                                 <Mail className="w-4 h-4" />
                                 {isSendingTestEmail
-                                    ? "Sending..."
-                                    : "Send test email"}
+                                    ? "Enviando..."
+                                    : "Enviar e-mail de teste"}
                             </Button>
                             {testEmailStatus.type && (
                                 <p
@@ -263,10 +262,10 @@ export function NotificationsSection() {
                             htmlFor="bark-notifications"
                             className="text-base"
                         >
-                            Bark push notifications
+                            Notificações push Bark
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Send push notifications via Bark for new recordings
+                            Enviar notificações push via Bark para novas gravações
                         </p>
                     </div>
                     <Switch
@@ -279,7 +278,7 @@ export function NotificationsSection() {
 
                 {barkNotifications && (
                     <div className="space-y-2">
-                        <Label htmlFor="bark-push-url">Bark push URL</Label>
+                        <Label htmlFor="bark-push-url">URL de push do Bark</Label>
                         <Input
                             id="bark-push-url"
                             type="url"
@@ -290,7 +289,7 @@ export function NotificationsSection() {
                             placeholder="https://api.day.app/your_key"
                         />
                         <p className="text-xs text-muted-foreground">
-                            Copy the full push URL from the Bark app (e.g.,
+                            Copie a URL completa de push do aplicativo Bark (ex:
                             https://api.day.app/your_key)
                         </p>
                     </div>
@@ -302,10 +301,10 @@ export function NotificationsSection() {
                             htmlFor="notification-sound"
                             className="text-base"
                         >
-                            Notification sound
+                            Som de notificação
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Play a sound when notifications are received
+                            Tocar um som quando notificações forem recebidas
                         </p>
                     </div>
                     <Switch

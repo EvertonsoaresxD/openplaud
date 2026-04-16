@@ -60,11 +60,11 @@ export function SummarySection() {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to save settings");
+                throw new Error("Falha ao salvar configurações");
             }
         } catch {
             setSelectedPrompt(previous);
-            toast.error("Failed to save settings. Changes reverted.");
+            toast.error("Falha ao salvar configurações. Mudanças revertidas.");
         }
     };
 
@@ -80,12 +80,12 @@ export function SummarySection() {
         <div className="space-y-6">
             <h2 className="text-lg font-semibold flex items-center gap-2">
                 <ListChecks className="w-5 h-5" />
-                Summary Settings
+                Configurações de Resumo
             </h2>
             <div className="space-y-4">
                 <div className="space-y-2">
                     <Label htmlFor="summary-preset">
-                        Default summary prompt
+                        Prompt de resumo padrão
                     </Label>
                     <Select
                         value={selectedPrompt}
@@ -96,7 +96,7 @@ export function SummarySection() {
                             <SelectValue>
                                 {SUMMARY_PRESETS[
                                     selectedPrompt as keyof typeof SUMMARY_PRESETS
-                                ]?.name || "General Summary"}
+                                ]?.name || "Resumo Geral"}
                             </SelectValue>
                         </SelectTrigger>
                         <SelectContent>
@@ -113,8 +113,8 @@ export function SummarySection() {
                         </SelectContent>
                     </Select>
                     <p className="text-xs text-muted-foreground">
-                        The default prompt preset used when generating
-                        summaries. You can override this per-recording.
+                        A predefinição de prompt padrão usada ao gerar resumos. 
+                        Você pode substituir esta configuração individualmente por gravação.
                     </p>
                 </div>
             </div>

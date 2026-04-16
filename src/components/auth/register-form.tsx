@@ -23,12 +23,12 @@ export function RegisterForm() {
         e.preventDefault();
 
         if (password !== confirmPassword) {
-            toast.error("Passwords do not match");
+            toast.error("As senhas não coincidem");
             return;
         }
 
         if (password.length < 8) {
-            toast.error("Password must be at least 8 characters");
+            toast.error("A senha deve ter pelo menos 8 caracteres");
             return;
         }
 
@@ -42,18 +42,18 @@ export function RegisterForm() {
             });
 
             if (result.error) {
-                toast.error(result.error.message || "Failed to create account");
+                toast.error(result.error.message || "Falha ao criar conta");
                 return;
             }
 
-            toast.success("Account created successfully");
+            toast.success("Conta criada com sucesso");
             router.push("/onboarding");
             router.refresh();
         } catch (error) {
             const message =
                 error instanceof Error
                     ? error.message
-                    : "Failed to create account";
+                    : "Falha ao criar conta";
             toast.error(message);
         } finally {
             setIsLoading(false);
@@ -66,21 +66,21 @@ export function RegisterForm() {
                 <Logo className="size-10 shrink-0" />
                 <div>
                     <h1 className="text-2xl font-bold tracking-tight">
-                        Create Account
+                        Criar Conta
                     </h1>
                     <p className="text-sm text-muted-foreground">
-                        Get started with OpenPlaud
+                        Comece a usar o OpenPlaud
                     </p>
                 </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
+                    <Label htmlFor="name">Nome</Label>
                     <Input
                         id="name"
                         type="text"
-                        placeholder="John Doe"
+                        placeholder="João da Silva"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
@@ -89,11 +89,11 @@ export function RegisterForm() {
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">E-mail</Label>
                     <Input
                         id="email"
                         type="email"
-                        placeholder="you@example.com"
+                        placeholder="voce@exemplo.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -102,7 +102,7 @@ export function RegisterForm() {
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">Senha</Label>
                     <Input
                         id="password"
                         type="password"
@@ -116,7 +116,7 @@ export function RegisterForm() {
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="confirmPassword">Confirm Password</Label>
+                    <Label htmlFor="confirmPassword">Confirmar Senha</Label>
                     <Input
                         id="confirmPassword"
                         type="password"
@@ -134,19 +134,19 @@ export function RegisterForm() {
                     variant="cyan"
                     disabled={isLoading}
                 >
-                    {isLoading ? "Creating account..." : "Create Account"}
+                    {isLoading ? "Criando a conta..." : "Criar Conta"}
                 </MetalButton>
             </form>
 
             <div className="text-center text-sm">
                 <span className="text-muted-foreground">
-                    Already have an account?{" "}
+                    Já possui uma conta?{" "}
                 </span>
                 <Link
                     href="/login"
                     className="text-accent-cyan hover:underline"
                 >
-                    Sign in
+                    Entrar
                 </Link>
             </div>
         </Panel>

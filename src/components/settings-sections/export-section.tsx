@@ -16,17 +16,17 @@ import { Switch } from "@/components/ui/switch";
 import { useSettings } from "@/hooks/use-settings";
 
 const exportFormatOptions = [
-    { label: "JSON", value: "json", description: "Structured data format" },
-    { label: "TXT", value: "txt", description: "Plain text format" },
-    { label: "SRT", value: "srt", description: "Subtitle format" },
-    { label: "VTT", value: "vtt", description: "WebVTT subtitle format" },
+    { label: "JSON", value: "json", description: "Formato de dados estruturado" },
+    { label: "TXT", value: "txt", description: "Formato de texto simples" },
+    { label: "SRT", value: "srt", description: "Formato de legenda" },
+    { label: "VTT", value: "vtt", description: "Formato de legenda WebVTT" },
 ];
 
 const backupFrequencyOptions = [
-    { label: "Never", value: "never" },
-    { label: "Daily", value: "daily" },
-    { label: "Weekly", value: "weekly" },
-    { label: "Monthly", value: "monthly" },
+    { label: "Nunca", value: "never" },
+    { label: "Diariamente", value: "daily" },
+    { label: "Semanalmente", value: "weekly" },
+    { label: "Mensalmente", value: "monthly" },
 ];
 
 interface ExportSectionProps {
@@ -88,7 +88,7 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to save settings");
+                throw new Error("Falha ao salvar configurações");
             }
         } catch {
             if (updates.defaultExportFormat !== undefined) {
@@ -104,7 +104,7 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                 if (typeof prev === "string" || prev === null)
                     setBackupFrequency(prev);
             }
-            toast.error("Failed to save settings. Changes reverted.");
+            toast.error("Falha ao salvar configurações. Mudanças revertidas.");
         }
     };
 
@@ -114,7 +114,7 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
             const response = await fetch(
                 `/api/export?format=${defaultExportFormat}`,
             );
-            if (!response.ok) throw new Error("Export failed");
+            if (!response.ok) throw new Error("Falha na exportação");
 
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
@@ -130,9 +130,9 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
 
-            toast.success("Export completed");
+            toast.success("Exportação concluída");
         } catch {
-            toast.error("Failed to export recordings");
+            toast.error("Falha ao exportar gravações");
         } finally {
             setIsExporting(false);
         }
@@ -142,7 +142,7 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
         setIsBackingUp(true);
         try {
             const response = await fetch("/api/backup", { method: "POST" });
-            if (!response.ok) throw new Error("Backup failed");
+            if (!response.ok) throw new Error("Falha ao criar backup");
 
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
@@ -158,9 +158,9 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
 
-            toast.success("Backup created");
+            toast.success("Backup criado");
         } catch {
-            toast.error("Failed to create backup");
+            toast.error("Falha ao criar backup");
         } finally {
             setIsBackingUp(false);
         }
@@ -178,11 +178,11 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
         <div className="space-y-6">
             <h2 className="text-lg font-semibold flex items-center gap-2">
                 <Download className="w-5 h-5" />
-                Export/Backup Settings
+                Configurações de Exportação/Backup
             </h2>
             <div className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="export-format">Default export format</Label>
+                    <Label htmlFor="export-format">Formato de exportação padrão</Label>
                     <Select
                         value={defaultExportFormat}
                         onValueChange={(value) => {
@@ -222,14 +222,14 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                     <div className="space-y-0.5 flex-1">
                         <div className="flex items-center gap-2">
                             <Label htmlFor="auto-export" className="text-base">
-                                Auto-export new recordings
+                                Exportar novas gravações automaticamente
                             </Label>
                             <span className="text-xs bg-muted px-2 py-0.5 rounded">
-                                Coming soon
+                                Em breve
                             </span>
                         </div>
                         <p className="text-sm text-muted-foreground">
-                            Automatically export recordings when they are synced
+                            Exportar gravações automaticamente quando forem sincronizadas
                         </p>
                     </div>
                     <Switch
@@ -248,10 +248,10 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                 <div className="space-y-2 opacity-60">
                     <div className="flex items-center gap-2">
                         <Label htmlFor="backup-frequency">
-                            Backup frequency
+                            Frequência de backup
                         </Label>
                         <span className="text-xs bg-muted px-2 py-0.5 rounded">
-                            Coming soon
+                            Em breve
                         </span>
                     </div>
                     <Select
@@ -271,7 +271,7 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                                     (opt) =>
                                         opt.value ===
                                         (backupFrequency || "never"),
-                                )?.label || "Never"}
+                                )?.label || "Nunca"}
                             </SelectValue>
                         </SelectTrigger>
                         <SelectContent>
@@ -286,14 +286,14 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                         </SelectContent>
                     </Select>
                     <p className="text-xs text-muted-foreground">
-                        How often to automatically create backups
+                        Com que frequência criar backups automaticamente
                     </p>
                 </div>
             </div>
 
             <div className="pt-4 border-t space-y-3">
                 <div className="space-y-2">
-                    <Label className="text-base">Manual Actions</Label>
+                    <Label className="text-base">Ações Manuais</Label>
                     <Button
                         onClick={async () => {
                             try {
@@ -308,17 +308,17 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                                 });
                                 onReRunOnboarding?.();
                             } catch {
-                                toast.error("Failed to reset onboarding");
+                                toast.error("Falha ao redefinir o onboarding");
                             }
                         }}
                         variant="outline"
                         className="w-full"
                     >
                         <RefreshCw className="w-4 h-4 mr-2" />
-                        Re-run Onboarding
+                        Refazer o Onboarding
                     </Button>
                     <p className="text-xs text-muted-foreground">
-                        Reset onboarding to see it again on your next visit
+                        Redefine o onboarding para vê-lo novamente em sua próxima visita
                     </p>
                     <div className="flex gap-2 pt-2">
                         <Button
@@ -330,12 +330,12 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                             {isExporting ? (
                                 <>
                                     <div className="animate-spin w-4 h-4 mr-2 border-2 border-primary border-t-transparent rounded-full" />
-                                    Exporting...
+                                    Exportando...
                                 </>
                             ) : (
                                 <>
                                     <Download className="w-4 h-4 mr-2" />
-                                    Export All
+                                    Exportar Tudo
                                 </>
                             )}
                         </Button>
@@ -348,12 +348,12 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                             {isBackingUp ? (
                                 <>
                                     <div className="animate-spin w-4 h-4 mr-2 border-2 border-primary border-t-transparent rounded-full" />
-                                    Creating...
+                                    Criando...
                                 </>
                             ) : (
                                 <>
                                     <Download className="w-4 h-4 mr-2" />
-                                    Create Backup
+                                    Criar Backup
                                 </>
                             )}
                         </Button>

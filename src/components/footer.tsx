@@ -14,14 +14,13 @@ export function Footer() {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex flex-col items-center md:items-start gap-2">
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <span className="font-mono">Made with</span>
+                            <span className="font-mono">Feito com</span>
                             <Heart className="w-4 h-4 text-destructive fill-destructive animate-pulse" />
-                            <span className="font-mono">for meetings</span>
+                            <span className="font-mono">para reuniões</span>
                         </div>
                         <div className="flex flex-col items-center md:items-start gap-1">
                             <div className="flex items-center gap-2 text-xs text-muted-foreground/80 font-mono">
                                 <Logo className="size-4" />
-                                <span>
                                     © {currentYear}{" "}
                                     <Link
                                         href="https://openplaud.com"
@@ -29,7 +28,7 @@ export function Footer() {
                                     >
                                         OpenPlaud
                                     </Link>
-                                    . Licensed under{" "}
+                                    . Licenciado sob{" "}
                                     <Link
                                         href="https://www.gnu.org/licenses/agpl-3.0.html"
                                         target="_blank"
@@ -63,14 +62,14 @@ export function Footer() {
                             ))}
                         </div>
                         <div className="text-[10px] text-muted-foreground/50 font-mono uppercase tracking-wider">
-                            Open Source • Built for the Community
+                            Código Aberto • Feito para a Comunidade
                         </div>
                         <Link
                             href="https://github.com/openplaud/openplaud"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-muted-foreground/50 hover:text-muted-foreground transition-colors"
-                            aria-label="View source code on GitHub"
+                            aria-label="Ver código-fonte no GitHub"
                         >
                             <Github className="size-4 text-muted-foreground/50 hover:text-muted-foreground transition-colors" />
                         </Link>

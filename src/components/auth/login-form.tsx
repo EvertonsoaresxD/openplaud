@@ -29,19 +29,19 @@ export function LoginForm() {
 
             if (result.error) {
                 toast.error(
-                    result.error.message || "Invalid email or password",
+                    result.error.message || "E-mail ou senha inválidos",
                 );
                 return;
             }
 
-            toast.success("Logged in successfully");
+            toast.success("Login efetuado com sucesso");
             router.push("/dashboard");
             router.refresh();
         } catch (error) {
             const message =
                 error instanceof Error
                     ? error.message
-                    : "Invalid email or password";
+                    : "E-mail ou senha inválidos";
             toast.error(message);
         } finally {
             setIsLoading(false);
@@ -57,14 +57,14 @@ export function LoginForm() {
                         OpenPlaud
                     </h1>
                     <p className="text-sm text-muted-foreground">
-                        Self-hosted AI transcription
+                        Transcrição de IA auto-hospedada
                     </p>
                 </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">E-mail</Label>
                     <Input
                         id="email"
                         type="email"
@@ -77,7 +77,7 @@ export function LoginForm() {
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">Senha</Label>
                     <Input
                         id="password"
                         type="password"
@@ -95,19 +95,19 @@ export function LoginForm() {
                     variant="cyan"
                     disabled={isLoading}
                 >
-                    {isLoading ? "Signing in..." : "Sign In"}
+                    {isLoading ? "Entrando..." : "Entrar"}
                 </MetalButton>
             </form>
 
             <div className="text-center text-sm">
                 <span className="text-muted-foreground">
-                    Don't have an account?{" "}
+                    Não possui uma conta?{" "}
                 </span>
                 <Link
                     href="/register"
                     className="text-accent-cyan hover:underline"
                 >
-                    Register
+                    Cadastre-se
                 </Link>
             </div>
         </Panel>

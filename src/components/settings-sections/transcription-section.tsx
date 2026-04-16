@@ -15,34 +15,34 @@ import { Switch } from "@/components/ui/switch";
 import { useSettings } from "@/hooks/use-settings";
 
 const languageOptions = [
-    { label: "Auto-detect", value: null },
-    { label: "English", value: "en" },
-    { label: "Spanish", value: "es" },
-    { label: "French", value: "fr" },
-    { label: "German", value: "de" },
-    { label: "Italian", value: "it" },
-    { label: "Portuguese", value: "pt" },
-    { label: "Chinese", value: "zh" },
-    { label: "Japanese", value: "ja" },
-    { label: "Korean", value: "ko" },
-    { label: "Russian", value: "ru" },
+    { label: "Detectar automaticamente", value: null },
+    { label: "Inglês", value: "en" },
+    { label: "Espanhol", value: "es" },
+    { label: "Francês", value: "fr" },
+    { label: "Alemão", value: "de" },
+    { label: "Italiano", value: "it" },
+    { label: "Português", value: "pt" },
+    { label: "Chinês", value: "zh" },
+    { label: "Japonês", value: "ja" },
+    { label: "Coreano", value: "ko" },
+    { label: "Russo", value: "ru" },
 ];
 
 const qualityOptions = [
     {
-        label: "Fast",
+        label: "Rápido",
         value: "fast",
-        description: "Faster transcription, lower accuracy",
+        description: "Transcrição mais rápida, menor precisão",
     },
     {
-        label: "Balanced",
+        label: "Equilibrado",
         value: "balanced",
-        description: "Good balance of speed and accuracy",
+        description: "Bom equilíbrio entre velocidade e precisão",
     },
     {
-        label: "Accurate",
+        label: "Preciso",
         value: "accurate",
-        description: "Highest accuracy, slower transcription",
+        description: "Maior precisão, transcrição mais lenta",
     },
 ];
 
@@ -96,14 +96,14 @@ export function TranscriptionSection() {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to save settings");
+                throw new Error("Falha ao salvar configurações");
             }
 
             pendingChangesRef.current.delete("autoTranscribe");
         } catch {
             setAutoTranscribe(previous);
             pendingChangesRef.current.delete("autoTranscribe");
-            toast.error("Failed to save settings. Changes reverted.");
+            toast.error("Falha ao salvar configurações. Mudanças revertidas.");
         }
     };
 
@@ -147,7 +147,7 @@ export function TranscriptionSection() {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to save settings");
+                throw new Error("Falha ao salvar configurações");
             }
 
             if (updates.defaultTranscriptionLanguage !== undefined) {
@@ -204,7 +204,7 @@ export function TranscriptionSection() {
                     pendingChangesRef.current.delete("syncTitleToPlaud");
                 }
             }
-            toast.error("Failed to save settings. Changes reverted.");
+            toast.error("Falha ao salvar configurações. Mudanças revertidas.");
         }
     };
 
@@ -220,17 +220,17 @@ export function TranscriptionSection() {
         <div className="space-y-6">
             <h2 className="text-lg font-semibold flex items-center gap-2">
                 <FileText className="w-5 h-5" />
-                Transcription Settings
+                Configurações de Transcrição
             </h2>
             <div className="space-y-4">
                 <div className="flex items-center justify-between">
                     <div className="space-y-0.5 flex-1">
                         <Label htmlFor="auto-transcribe" className="text-base">
-                            Auto-transcribe new recordings
+                            Transcrever novas gravações automaticamente
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Automatically transcribe recordings when they are
-                            synced from your Plaud device
+                            Transcrever automaticamente as gravações quando forem
+                            sincronizadas do seu dispositivo Plaud
                         </p>
                     </div>
                     <Switch
@@ -243,7 +243,7 @@ export function TranscriptionSection() {
 
                 <div className="space-y-2">
                     <Label htmlFor="transcription-language">
-                        Default transcription language
+                        Idioma de transcrição padrão
                     </Label>
                     <Select
                         value={defaultTranscriptionLanguage || "auto"}
@@ -265,7 +265,7 @@ export function TranscriptionSection() {
                                     (opt) =>
                                         opt.value ===
                                         defaultTranscriptionLanguage,
-                                )?.label || "Auto-detect"}
+                                )?.label || "Detectar automaticamente"}
                             </SelectValue>
                         </SelectTrigger>
                         <SelectContent>
@@ -280,14 +280,14 @@ export function TranscriptionSection() {
                         </SelectContent>
                     </Select>
                     <p className="text-xs text-muted-foreground">
-                        Language to use for transcription. Auto-detect will
-                        identify the language automatically.
+                        Idioma a ser usado para transcrição. A detecção automática
+                        identificará o idioma automaticamente.
                     </p>
                 </div>
 
                 <div className="space-y-2">
                     <Label htmlFor="transcription-quality">
-                        Transcription quality
+                        Qualidade da transcrição
                     </Label>
                     <Select
                         value={transcriptionQuality}
@@ -306,7 +306,7 @@ export function TranscriptionSection() {
                             <SelectValue>
                                 {qualityOptions.find(
                                     (opt) => opt.value === transcriptionQuality,
-                                )?.label || "Balanced"}
+                                )?.label || "Equilibrado"}
                             </SelectValue>
                         </SelectTrigger>
                         <SelectContent>
@@ -326,7 +326,7 @@ export function TranscriptionSection() {
                         </SelectContent>
                     </Select>
                     <p className="text-xs text-muted-foreground">
-                        Balance between transcription speed and accuracy
+                        Equilíbrio entre velocidade e precisão da transcrição
                     </p>
                 </div>
 
@@ -336,11 +336,11 @@ export function TranscriptionSection() {
                             htmlFor="auto-generate-title"
                             className="text-base"
                         >
-                            Auto-generate titles
+                            Gerar títulos automaticamente
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Automatically generate descriptive titles from
-                            transcriptions using AI
+                            Gerar automaticamente títulos descritivos a partir de
+                            transcrições usando IA
                         </p>
                     </div>
                     <Switch
@@ -363,11 +363,11 @@ export function TranscriptionSection() {
                                 htmlFor="sync-title-plaud"
                                 className="text-base"
                             >
-                                Sync titles to Plaud
+                                Sincronizar títulos com o Plaud
                             </Label>
                             <p className="text-sm text-muted-foreground">
-                                Update the filename in your Plaud device when
-                                titles are generated
+                                Atualizar o nome do arquivo no seu dispositivo Plaud quando
+                                os títulos forem gerados
                             </p>
                         </div>
                         <Switch
@@ -396,13 +396,12 @@ export function TranscriptionSection() {
                                     : "text-muted-foreground"
                             }`}
                         >
-                            {autoTranscribe ? "Enabled" : "Disabled"}
+                            {autoTranscribe ? "Ativado" : "Desativado"}
                         </span>
                     </div>
                     <p className="text-xs text-muted-foreground pt-2">
-                        When enabled, new recordings will be automatically
-                        transcribed using your default transcription provider
-                        after syncing.
+                        Quando ativado, novas gravações serão prescritas automaticamente
+                        usando seu provedor de transcrição padrão após a sincronização.
                     </p>
                 </div>
             </div>

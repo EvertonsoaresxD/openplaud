@@ -77,7 +77,7 @@ const providerPresets = [
     {
         name: "Custom",
         baseUrl: "",
-        placeholder: "Your API key",
+        placeholder: "Sua chave da API",
         defaultModel: "",
     },
 ];
@@ -127,12 +127,12 @@ export function EditProviderDialog({
         e.preventDefault();
 
         if (!providerName) {
-            toast.error("Provider name is required");
+            toast.error("Nome do provedor é obrigatório");
             return;
         }
 
         if (!provider?.id) {
-            toast.error("Provider ID is missing");
+            toast.error("ID do provedor ausente");
             return;
         }
 
@@ -166,10 +166,10 @@ export function EditProviderDialog({
 
             if (!response.ok) {
                 const error = await response.json();
-                throw new Error(error.error || "Failed to update provider");
+                throw new Error(error.error || "Falha ao atualizar provedor");
             }
 
-            toast.success("AI provider updated successfully");
+            toast.success("Provedor de IA atualizado com sucesso");
             onSuccess();
             onOpenChange(false);
 
@@ -183,7 +183,7 @@ export function EditProviderDialog({
             toast.error(
                 error instanceof Error
                     ? error.message
-                    : "Failed to update AI provider",
+                    : "Falha ao atualizar provedor de IA",
             );
         } finally {
             setIsLoading(false);
@@ -198,19 +198,19 @@ export function EditProviderDialog({
         <Dialog open={open} onOpenChange={onOpenChange} key={provider.id}>
             <DialogContent className="max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Edit AI Provider</DialogTitle>
+                    <DialogTitle>Editar Provedor de IA</DialogTitle>
                 </DialogHeader>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
-                        <Label>Provider</Label>
+                        <Label>Provedor</Label>
                         <Select
                             value={providerName}
                             onValueChange={handleProviderChange}
                             disabled={isLoading}
                         >
                             <SelectTrigger>
-                                <SelectValue placeholder="Select a provider" />
+                                <SelectValue placeholder="Selecione um provedor" />
                             </SelectTrigger>
                             <SelectContent>
                                 {providerPresets.map((preset) => (
@@ -226,13 +226,13 @@ export function EditProviderDialog({
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="apiKey">API Key</Label>
+                        <Label htmlFor="apiKey">Chave da API</Label>
                         <Input
                             id="apiKey"
                             type="password"
                             placeholder={
                                 selectedPreset?.placeholder ||
-                                "Enter a new key to replace the current one"
+                                "Insira uma nova chave para substituir a atual"
                             }
                             value={apiKey}
                             onChange={(e) => setApiKey(e.target.value)}
@@ -242,15 +242,15 @@ export function EditProviderDialog({
                         <div className="text-xs text-muted-foreground flex items-center gap-2">
                             <Shield className="w-3.5 h-3.5 shrink-0" />
                             <span>
-                                For security, the saved API key is never shown.
-                                Leave this blank to keep your current key, or
-                                enter a new key to replace it.
+                                Por segurança, a chave da API salva nunca é exibida.
+                                Deixe em branco para manter sua chave atual, ou
+                                insira uma nova chave para substituí-la.
                             </span>
                         </div>
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="baseUrl">Base URL (Optional)</Label>
+                        <Label htmlFor="baseUrl">URL Base (Opcional)</Label>
                         <Input
                             id="baseUrl"
                             type="text"
@@ -264,7 +264,7 @@ export function EditProviderDialog({
 
                     <div className="space-y-2">
                         <Label htmlFor="defaultModel">
-                            Default Model (Optional)
+                            Modelo Padrão (Opcional)
                         </Label>
                         <Input
                             id="defaultModel"
@@ -287,7 +287,7 @@ export function EditProviderDialog({
                                 }
                                 disabled={isLoading}
                             />
-                            <span>Use for transcription</span>
+                            <span>Usar para transcrição</span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input
@@ -298,7 +298,7 @@ export function EditProviderDialog({
                                 }
                                 disabled={isLoading}
                             />
-                            <span>Use for AI enhancements</span>
+                            <span>Usar para análises de IA</span>
                         </label>
                     </Panel>
 
@@ -309,14 +309,14 @@ export function EditProviderDialog({
                             disabled={isLoading}
                             className="flex-1"
                         >
-                            Cancel
+                            Cancelar
                         </MetalButton>
                         <MetalButton
                             type="submit"
                             disabled={isLoading}
                             className="flex-1"
                         >
-                            {isLoading ? "Updating..." : "Update Provider"}
+                            {isLoading ? "Atualizando..." : "Atualizar Provedor"}
                         </MetalButton>
                     </div>
                 </form>

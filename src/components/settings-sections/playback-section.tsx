@@ -94,7 +94,7 @@ export function PlaybackSection() {
                 });
 
                 if (!response.ok) {
-                    throw new Error("Failed to save settings");
+                    throw new Error("Falha ao salvar configurações");
                 }
             } catch {
                 if (updates.defaultPlaybackSpeed !== undefined) {
@@ -109,7 +109,7 @@ export function PlaybackSection() {
                     const prev = previousValues.autoPlayNext;
                     if (typeof prev === "boolean") setAutoPlayNext(prev);
                 }
-                toast.error("Failed to save settings. Changes reverted.");
+                toast.error("Falha ao salvar configurações. Mudanças revertidas.");
             }
         };
 
@@ -132,12 +132,12 @@ export function PlaybackSection() {
         <div className="space-y-6">
             <h2 className="text-lg font-semibold flex items-center gap-2">
                 <Play className="w-5 h-5" />
-                Playback Settings
+                Configurações de Reprodução
             </h2>
             <div className="space-y-4">
                 <div className="space-y-2">
                     <Label htmlFor="playback-speed">
-                        Default playback speed
+                        Velocidade de reprodução padrão
                     </Label>
                     <Select
                         value={defaultPlaybackSpeed.toString()}
@@ -169,13 +169,13 @@ export function PlaybackSection() {
                         </SelectContent>
                     </Select>
                     <p className="text-xs text-muted-foreground">
-                        Default playback speed for new recordings
+                        Velocidade padrão de reprodução para novas gravações
                     </p>
                 </div>
 
                 <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                        <Label htmlFor="default-volume">Default volume</Label>
+                        <Label htmlFor="default-volume">Volume padrão</Label>
                         <span className="text-sm text-muted-foreground">
                             {defaultVolume}%
                         </span>
@@ -196,18 +196,17 @@ export function PlaybackSection() {
                         step={1}
                     />
                     <p className="text-xs text-muted-foreground">
-                        Default volume level for audio playback
+                        Nível de volume padrão para reprodução de áudio
                     </p>
                 </div>
 
                 <div className="flex items-center justify-between">
                     <div className="space-y-0.5 flex-1">
                         <Label htmlFor="auto-play-next" className="text-base">
-                            Auto-play next recording
+                            Tocar a próxima gravação automaticamente
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Automatically play the next recording when the
-                            current one ends
+                            Reproduzir automaticamente a próxima gravação quando a atual terminar
                         </p>
                     </div>
                     <Switch
@@ -226,35 +225,35 @@ export function PlaybackSection() {
 
             <div className="pt-4 border-t">
                 <div className="space-y-2">
-                    <Label className="text-base">Keyboard Shortcuts</Label>
+                    <Label className="text-base">Atalhos de Teclado</Label>
                     <div className="space-y-1.5 text-sm">
                         <div className="flex justify-between">
-                            <span className="text-muted-foreground">Space</span>
-                            <span>Play/Pause</span>
+                            <span className="text-muted-foreground">Espaço</span>
+                            <span>Reproduzir/Pausar</span>
                         </div>
                         <div className="flex justify-between">
                             <span className="text-muted-foreground">
-                                Arrow Left
+                                Seta para a Esquerda
                             </span>
-                            <span>Seek backward 5s</span>
+                            <span>Retroceder 5s</span>
                         </div>
                         <div className="flex justify-between">
                             <span className="text-muted-foreground">
-                                Arrow Right
+                                Seta para a Direita
                             </span>
-                            <span>Seek forward 5s</span>
+                            <span>Avançar 5s</span>
                         </div>
                         <div className="flex justify-between">
                             <span className="text-muted-foreground">
-                                Arrow Up
+                                Seta para Cima
                             </span>
-                            <span>Increase volume</span>
+                            <span>Aumentar volume</span>
                         </div>
                         <div className="flex justify-between">
                             <span className="text-muted-foreground">
-                                Arrow Down
+                                Seta para Baixo
                             </span>
-                            <span>Decrease volume</span>
+                            <span>Diminuir volume</span>
                         </div>
                     </div>
                 </div>

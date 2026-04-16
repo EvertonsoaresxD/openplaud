@@ -81,21 +81,19 @@ export default async function HomePage() {
                     <div className="container mx-auto px-4 text-center relative z-10">
                         <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary mb-8 backdrop-blur-sm">
                             <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse shadow-[0_0_8px_rgba(var(--primary),0.8)]"></span>
-                            v1.0 Production Ready
+                            v1.0 Pronto para Produção
                         </div>
 
                         <h1 className="text-4xl md:text-7xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground/90 to-foreground/50">
-                            The Professional Interface
+                            A Interface Profissional
                             <br />
                             <span className="text-foreground">
-                                for Plaud Note
+                                para Plaud Note
                             </span>
                         </h1>
 
                         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed">
-                            Stop paying monthly subscriptions. Use your own API
-                            keys, store your data locally, and get professional
-                            transcriptions with complete privacy.
+                            Pare de pagar assinaturas mensais. Use suas próprias chaves de API, armazene seus dados localmente e obtenha transcrições profissionais com total privacidade.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
@@ -104,7 +102,7 @@ export default async function HomePage() {
                                     size="lg"
                                     className="w-full sm:w-auto gap-2 bg-primary text-primary-foreground hover:bg-primary/90 border-primary/50 h-14 px-8 text-lg shadow-[0_0_20px_rgba(var(--primary),0.3)]"
                                 >
-                                    Get Started{" "}
+                                    Começar{" "}
                                     <ArrowRight className="size-5" />
                                 </MetalButton>
                             </Link>
@@ -118,7 +116,7 @@ export default async function HomePage() {
                                     variant="default"
                                     className="w-full sm:w-auto gap-2 bg-background/50 backdrop-blur hover:bg-background/80 h-14 px-8 text-lg"
                                 >
-                                    <Github className="size-5" /> View Source
+                                    <Github className="size-5" /> Ver Código
                                 </MetalButton>
                             </Link>
                         </div>
@@ -144,10 +142,10 @@ export default async function HomePage() {
                                     <div className="flex items-center justify-between mb-6">
                                         <div>
                                             <h1 className="text-2xl font-bold">
-                                                Recordings
+                                                Gravações
                                             </h1>
                                             <p className="text-muted-foreground text-sm mt-1">
-                                                3 recordings
+                                                3 gravações
                                             </p>
                                         </div>
                                         <div className="flex items-center gap-3">
@@ -156,7 +154,7 @@ export default async function HomePage() {
                                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                                                 </span>
-                                                Synced just now
+                                                Sincronizado agora
                                             </div>
                                             <Button
                                                 variant="outline"
@@ -164,7 +162,7 @@ export default async function HomePage() {
                                                 className="h-9"
                                             >
                                                 <RefreshCw className="w-4 h-4 mr-2" />
-                                                Sync Device
+                                                Sincronizar App
                                             </Button>
                                             <Button
                                                 variant="outline"
@@ -185,7 +183,7 @@ export default async function HomePage() {
                                                             {
                                                                 id: 1,
                                                                 filename:
-                                                                    "Weekly Team Sync.mp3",
+                                                                    "Reunião Semanal.mp3",
                                                                 time: "10:00 AM",
                                                                 duration:
                                                                     "45:20",
@@ -195,8 +193,8 @@ export default async function HomePage() {
                                                             {
                                                                 id: 2,
                                                                 filename:
-                                                                    "Product Roadmap.mp3",
-                                                                time: "Yesterday",
+                                                                    "Roadmap do Produto.mp3",
+                                                                time: "Ontem",
                                                                 duration:
                                                                     "1:15:00",
                                                                 size: "42.1 MB",
@@ -205,8 +203,8 @@ export default async function HomePage() {
                                                             {
                                                                 id: 3,
                                                                 filename:
-                                                                    "Client Interview.mp3",
-                                                                time: "2 days ago",
+                                                                    "Entrevista com Cliente.mp3",
+                                                                time: "Há 2 dias",
                                                                 duration:
                                                                     "22:15",
                                                                 size: "12.8 MB",
@@ -263,10 +261,10 @@ export default async function HomePage() {
                                             <Card>
                                                 <CardHeader className="pb-4">
                                                     <CardTitle className="text-lg">
-                                                        Weekly Team Sync.mp3
+                                                        Reunião Semanal.mp3
                                                     </CardTitle>
                                                     <p className="text-xs text-muted-foreground">
-                                                        Today at 10:00 AM
+                                                        Hoje às 10:00
                                                     </p>
                                                 </CardHeader>
                                                 <CardContent className="space-y-4">
@@ -322,7 +320,7 @@ export default async function HomePage() {
                                                     <div className="flex items-center justify-between">
                                                         <CardTitle className="flex items-center gap-2 text-base">
                                                             <FileText className="w-4 h-4" />
-                                                            Transcription
+                                                            Transcrição
                                                         </CardTitle>
                                                         <div className="flex items-center gap-2">
                                                             <Button
@@ -331,7 +329,7 @@ export default async function HomePage() {
                                                                 className="h-8 text-xs"
                                                             >
                                                                 <Download className="w-3 h-3 mr-1" />
-                                                                Export
+                                                                Exportar
                                                             </Button>
                                                         </div>
                                                     </div>
@@ -340,48 +338,47 @@ export default async function HomePage() {
                                                     <div className="bg-muted/50 rounded-lg p-4">
                                                         <p className="text-sm leading-relaxed text-muted-foreground">
                                                             <span className="text-foreground font-medium">
-                                                                Speaker A:
+                                                                Orador A:
                                                             </span>{" "}
-                                                            Alright, let's get
-                                                            started. The main
-                                                            goal for this week
-                                                            is to finalize the
-                                                            Q3 roadmap.
+                                                            Certo, vamos
+                                                            começar. O principal
+                                                            objetivo para esta semana
+                                                            é finalizar o
+                                                            roadmap do Q3.
                                                             <br />
                                                             <br />
                                                             <span className="text-foreground font-medium">
-                                                                Speaker B:
+                                                                Orador B:
                                                             </span>{" "}
-                                                            I've updated the
-                                                            Jira board with the
-                                                            new feature requests
-                                                            from the customer
-                                                            calls.
+                                                            Atualizei o
+                                                            quadro do Jira com as
+                                                            novas solicitações de
+                                                            recursos recebidas
+                                                            nas ligações com clientes.
                                                             <br />
                                                             <br />
                                                             <span className="text-foreground font-medium">
-                                                                Speaker A:
+                                                                Orador A:
                                                             </span>{" "}
-                                                            Great. Specifically,
-                                                            we need to focus on
-                                                            the API integration
-                                                            stability. It's been
-                                                            a recurring issue...
+                                                            Ótimo. Precisamos nos
+                                                            focar na estabilidade
+                                                            da integração da API. Tem
+                                                            sido um problema recorrente...
                                                         </p>
                                                     </div>
                                                     <div className="flex items-center gap-4 text-xs text-muted-foreground pt-3 border-t mt-3">
                                                         <div className="flex items-center gap-1">
                                                             <Languages className="w-3 h-3" />
                                                             <span>
-                                                                Language:
-                                                                English
+                                                                Idioma:
+                                                                Inglês
                                                             </span>
                                                         </div>
-                                                        <div>4,281 words</div>
+                                                        <div>4.281 palavras</div>
                                                         <div className="flex items-center gap-1 ml-auto text-primary">
                                                             <Sparkles className="w-3 h-3" />
                                                             <span>
-                                                                AI Summary Ready
+                                                                Resumo IA Pronto
                                                             </span>
                                                         </div>
                                                     </div>
@@ -400,44 +397,45 @@ export default async function HomePage() {
                     <div className="container mx-auto px-4">
                         <div className="text-center mb-16 max-w-3xl mx-auto">
                             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                                Why OpenPlaud?
+                                Por que OpenPlaud?
                             </h2>
                             <p className="text-muted-foreground text-lg">
-                                We built this because we wanted control over our
-                                own data. Here is why you should switch.
+                                Nós construímos isso porque queríamos controle
+                                sobre nossos próprios dados. Veja o porquê 
+                                você deveria migrar.
                             </p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <FeatureCard
                                 icon={<Database className="size-6" />}
-                                title="Your Data, Your Disk"
-                                description="Recordings are stored on your local filesystem or your own S3 bucket. No vendor lock-in, no mysterious cloud storage."
+                                title="Seus Dados, Seu Disco"
+                                description="As gravações são armazenadas no sistema de arquivos local ou no seu próprio S3. Sem fidelidade a provedores, sem uso misterioso da nuvem."
                             />
                             <FeatureCard
                                 icon={<Cpu className="size-6" />}
-                                title="Bring Your Own AI"
-                                description="Connect to OpenAI, Anthropic, Groq, or run local LLMs. Choose the model that fits your budget and privacy needs."
+                                title="Traga a sua Própria IA"
+                                description="Conecte-se com OpenAI, Anthropic, Groq ou use LLMs locais. Escolha o modelo e valores que se encaixam ao que você busca."
                             />
                             <FeatureCard
                                 icon={<Search className="size-6" />}
-                                title="Privacy First"
-                                description="No telemetry, no tracking. Use browser-based transcription to keep your audio strictly on your device."
+                                title="Privacidade"
+                                description="Sem telemetria e sem rastreio. Use a transcrição offline no próprio browser para manter sua voz totalmente privada."
                             />
                             <FeatureCard
                                 icon={<Zap className="size-6" />}
-                                title="Lightning Fast Sync"
-                                description="Background synchronization keeps your library up to date without you lifting a finger."
+                                title="Sincronização Rápida"
+                                description="Sincronização em background mantém a sua lib atualizada sem você precisar carregar nenhum arquivo."
                             />
                             <FeatureCard
                                 icon={<Download className="size-6" />}
-                                title="Export Anywhere"
-                                description="One-click export to Markdown, JSON, SRT, or VTT. Perfect for Notion, Obsidian, or video editors."
+                                title="Exporte para Onde Quiser"
+                                description="Exporte notas com um clique para Markdown, JSON, SRT ou VTT. Perfeito para o Notion, Obsidian ou CapCut."
                             />
                             <FeatureCard
                                 icon={<Shield className="size-6" />}
-                                title="Open Source (AGPL-3.0)"
-                                description="Audit the code yourself. Contribute features. The community drives the roadmap, not shareholders. Licensed under AGPL-3.0 for maximum freedom and transparency."
+                                title="Código Aberto (AGPL-3.0)"
+                                description="Audite o código você mesmo. Contribua com recursos. O rumo do projeto é determinado pela comunidade livre."
                             />
                         </div>
                     </div>
@@ -447,37 +445,37 @@ export default async function HomePage() {
                 <section className="py-24 container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <h2 className="text-3xl font-bold text-center mb-12">
-                            The Smart Alternative
+                            A Alternativa Inteligente
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="p-8 rounded-2xl border border-border bg-card">
                                 <h3 className="text-xl font-bold mb-6 text-muted-foreground">
-                                    Official Cloud
+                                    Nuvem Oficial
                                 </h3>
                                 <ul className="space-y-4">
                                     <li className="flex items-center gap-3 text-muted-foreground">
                                         <div className="size-5 rounded-full border border-border flex items-center justify-center shrink-0">
                                             ×
                                         </div>
-                                        Monthly subscription fees
+                                        Mensalidade recorrente e cara
                                     </li>
                                     <li className="flex items-center gap-3 text-muted-foreground">
                                         <div className="size-5 rounded-full border border-border flex items-center justify-center shrink-0">
                                             ×
                                         </div>
-                                        Limited recording minutes
+                                        Minutos limitados para transcrição
                                     </li>
                                     <li className="flex items-center gap-3 text-muted-foreground">
                                         <div className="size-5 rounded-full border border-border flex items-center justify-center shrink-0">
                                             ×
                                         </div>
-                                        Data stored on their servers
+                                        Seus aúdios nos servidores deles
                                     </li>
                                     <li className="flex items-center gap-3 text-muted-foreground">
                                         <div className="size-5 rounded-full border border-border flex items-center justify-center shrink-0">
                                             ×
                                         </div>
-                                        Fixed AI model choices
+                                        Sem escolha, apenas o modelo da casa
                                     </li>
                                 </ul>
                             </div>
@@ -487,7 +485,7 @@ export default async function HomePage() {
                                     OpenPlaud
                                 </div>
                                 <h3 className="text-xl font-bold mb-6 text-primary">
-                                    Self-Hosted
+                                    Auto-Hospedado (O Meu)
                                 </h3>
                                 <ul className="space-y-4">
                                     <li className="flex items-center gap-3">
@@ -495,7 +493,7 @@ export default async function HomePage() {
                                             <Check className="size-3" />
                                         </div>
                                         <span className="font-medium">
-                                            Free forever (Self-hosted)
+                                            Grátis para sempre na sua máquina
                                         </span>
                                     </li>
                                     <li className="flex items-center gap-3">
@@ -503,7 +501,7 @@ export default async function HomePage() {
                                             <Check className="size-3" />
                                         </div>
                                         <span className="font-medium">
-                                            Unlimited recordings
+                                            100% de minutos limitados pelo seu uso
                                         </span>
                                     </li>
                                     <li className="flex items-center gap-3">
@@ -511,7 +509,7 @@ export default async function HomePage() {
                                             <Check className="size-3" />
                                         </div>
                                         <span className="font-medium">
-                                            Data stays on your machine
+                                            Tudo gravado seguro e com backup onde você escolher
                                         </span>
                                     </li>
                                     <li className="flex items-center gap-3">
@@ -519,7 +517,7 @@ export default async function HomePage() {
                                             <Check className="size-3" />
                                         </div>
                                         <span className="font-medium">
-                                            Any AI Model (GPT-4, Claude, Llama)
+                                            Use DeepSeek, Llama, Gemini, o que vier!
                                         </span>
                                     </li>
                                 </ul>
@@ -536,15 +534,14 @@ export default async function HomePage() {
                             <div className="lg:w-1/2 space-y-6">
                                 <div className="inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-xs font-medium text-zinc-400">
                                     <Terminal className="mr-2 size-3" />
-                                    Zero Config Deployment
+                                    Suba em Minutos (Zero Config)
                                 </div>
                                 <h2 className="text-3xl font-bold tracking-tight">
-                                    Deploy in Seconds
+                                    Implante Rápido
                                 </h2>
                                 <p className="text-zinc-400 text-lg">
-                                    Get up and running instantly with Docker
-                                    Compose. Includes PostgreSQL database and
-                                    automatic migrations.
+                                    Rode de casa em segundos com o seu própro Docker Compose. O OpenPlaud
+                                    inclusive cuida das atualizações do BD Sozinho.
                                 </p>
                                 <div className="flex flex-wrap gap-4">
                                     <div className="flex items-center gap-2 text-sm text-zinc-500">
@@ -618,12 +615,11 @@ export default async function HomePage() {
                     <div className="bg-primary/5 rounded-3xl p-8 md:p-16 text-center relative overflow-hidden border border-primary/10">
                         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(var(--primary),0.1),transparent_70%)]" />
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 relative z-10">
-                            Ready to take ownership?
+                            Pronto para assumir o controle?
                         </h2>
                         <p className="text-muted-foreground max-w-xl mx-auto mb-8 relative z-10">
-                            Join the community of audio professionals and
-                            developers who prefer open, transparent, and private
-                            tools.
+                            Junte-se à comunidade de profissionais de áudio e
+                            desenvolvedores que preferem soluções abertas.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
                             <Link href="/register">
@@ -631,7 +627,7 @@ export default async function HomePage() {
                                     size="lg"
                                     className="bg-primary text-primary-foreground hover:bg-primary/90 border-primary/50 w-full sm:w-auto"
                                 >
-                                    Create Account
+                                    Criar Conta
                                 </MetalButton>
                             </Link>
                             <Link
@@ -643,7 +639,7 @@ export default async function HomePage() {
                                     variant="default"
                                     className="bg-background/50 w-full sm:w-auto"
                                 >
-                                    Star on GitHub
+                                    Dar Estrela no GitHub
                                 </MetalButton>
                             </Link>
                         </div>

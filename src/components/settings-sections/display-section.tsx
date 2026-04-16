@@ -16,35 +16,35 @@ import { useSettings } from "@/hooks/use-settings";
 
 const dateTimeFormatOptions = [
     {
-        label: "Relative",
+        label: "Relativo",
         value: "relative",
-        description: "e.g., 2 hours ago",
+        description: "ex., 2 horas atrás",
     },
     {
-        label: "Absolute",
+        label: "Absoluto",
         value: "absolute",
-        description: "e.g., Jan 15, 2024 3:45 PM",
+        description: "ex., 15 Jan 2024 15:45",
     },
     {
         label: "ISO",
         value: "iso",
-        description: "e.g., 2024-01-15T15:45:00Z",
+        description: "ex., 2024-01-15T15:45:00Z",
     },
 ];
 
 const sortOrderOptions = [
-    { label: "Newest first", value: "newest" },
-    { label: "Oldest first", value: "oldest" },
-    { label: "By name", value: "name" },
+    { label: "Mais recentes primeiro", value: "newest" },
+    { label: "Mais antigos primeiro", value: "oldest" },
+    { label: "Por nome", value: "name" },
 ];
 
 const themeOptions = [
-    { label: "Light", value: "light" },
-    { label: "Dark", value: "dark" },
+    { label: "Claro", value: "light" },
+    { label: "Escuro", value: "dark" },
     {
-        label: "System",
+        label: "Sistema",
         value: "system",
-        description: "Follow system preference",
+        description: "Seguir preferência do sistema",
     },
 ];
 
@@ -128,7 +128,7 @@ export function DisplaySection() {
                 });
 
                 if (!response.ok) {
-                    throw new Error("Failed to save settings");
+                    throw new Error("Falha ao salvar configurações");
                 }
             } catch {
                 if (updates.dateTimeFormat !== undefined) {
@@ -148,7 +148,7 @@ export function DisplaySection() {
                     const prev = previousValues.theme;
                     if (typeof prev === "string") setTheme(prev);
                 }
-                toast.error("Failed to save settings. Changes reverted.");
+                toast.error("Falha ao salvar configurações. Mudanças revertidas.");
             }
         };
 
@@ -171,11 +171,11 @@ export function DisplaySection() {
         <div className="space-y-6">
             <h2 className="text-lg font-semibold flex items-center gap-2">
                 <Monitor className="w-5 h-5" />
-                Display Settings
+                Configurações de Tela
             </h2>
             <div className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="date-time-format">Date/time format</Label>
+                    <Label htmlFor="date-time-format">Formato de data/hora</Label>
                     <Select
                         value={dateTimeFormat}
                         onValueChange={(value) => {
@@ -190,7 +190,7 @@ export function DisplaySection() {
                             <SelectValue>
                                 {dateTimeFormatOptions.find(
                                     (opt) => opt.value === dateTimeFormat,
-                                )?.label || "Relative"}
+                                )?.label || "Relativo"}
                             </SelectValue>
                         </SelectTrigger>
                         <SelectContent>
@@ -213,7 +213,7 @@ export function DisplaySection() {
 
                 <div className="space-y-2">
                     <Label htmlFor="sort-order">
-                        Recording list sort order
+                        Ordem de classificação
                     </Label>
                     <Select
                         value={recordingListSortOrder}
@@ -230,7 +230,7 @@ export function DisplaySection() {
                                 {sortOrderOptions.find(
                                     (opt) =>
                                         opt.value === recordingListSortOrder,
-                                )?.label || "Newest first"}
+                                )?.label || "Mais recentes primeiro"}
                             </SelectValue>
                         </SelectTrigger>
                         <SelectContent>
@@ -247,7 +247,7 @@ export function DisplaySection() {
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="items-per-page">Items per page</Label>
+                    <Label htmlFor="items-per-page">Itens por página</Label>
                     <Input
                         id="items-per-page"
                         type="number"
@@ -270,12 +270,12 @@ export function DisplaySection() {
                         }}
                     />
                     <p className="text-xs text-muted-foreground">
-                        Number of recordings to display per page (10-100)
+                        Número de gravações a serem exibidas por página (10-100)
                     </p>
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="theme">Theme</Label>
+                    <Label htmlFor="theme">Tema</Label>
                     <Select
                         value={theme}
                         onValueChange={(value) => {
@@ -287,7 +287,7 @@ export function DisplaySection() {
                         <SelectTrigger id="theme" className="w-full">
                             <SelectValue>
                                 {themeOptions.find((opt) => opt.value === theme)
-                                    ?.label || "System"}
+                                    ?.label || "Sistema"}
                             </SelectValue>
                         </SelectTrigger>
                         <SelectContent>

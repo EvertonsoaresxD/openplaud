@@ -65,27 +65,27 @@ interface SettingsDialogProps {
 import type { SettingsSection } from "@/types/settings";
 
 const settingsNav = [
-    { name: "AI", id: "providers" as SettingsSection, icon: Bot },
+    { name: "IA", id: "providers" as SettingsSection, icon: Bot },
     {
-        name: "Transcription",
+        name: "Transcrição",
         id: "transcription" as SettingsSection,
         icon: FileText,
     },
     {
-        name: "Summary",
+        name: "Resumo",
         id: "summary" as SettingsSection,
         icon: ListChecks,
     },
-    { name: "Sync", id: "sync" as SettingsSection, icon: RefreshCw },
-    { name: "Playback", id: "playback" as SettingsSection, icon: Play },
-    { name: "Display", id: "display" as SettingsSection, icon: Monitor },
+    { name: "Sincronização", id: "sync" as SettingsSection, icon: RefreshCw },
+    { name: "Reprodução", id: "playback" as SettingsSection, icon: Play },
+    { name: "Tela", id: "display" as SettingsSection, icon: Monitor },
     {
-        name: "Notifications",
+        name: "Notificações",
         id: "notifications" as SettingsSection,
         icon: Bell,
     },
-    { name: "Export/Backup", id: "export" as SettingsSection, icon: Download },
-    { name: "Storage", id: "storage" as SettingsSection, icon: HardDrive },
+    { name: "Exportar/Backup", id: "export" as SettingsSection, icon: Download },
+    { name: "Armazenamento", id: "storage" as SettingsSection, icon: HardDrive },
 ];
 
 const STORAGE_KEY = "settings-last-section";
@@ -224,10 +224,9 @@ export function SettingsDialog({
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="overflow-hidden p-0 md:max-h-[600px] md:max-w-[800px] lg:max-w-[900px]">
-                <DialogTitle className="sr-only">Settings</DialogTitle>
+                <DialogTitle className="sr-only">Configurações</DialogTitle>
                 <DialogDescription className="sr-only">
-                    Customize your settings here. Use arrow keys to navigate
-                    sections, Enter or Space to select, and Escape to close.
+                    Personalize suas configurações aqui. Use as setas do teclado para navegar pelas seções, Enter ou Espaço para selecionar e Esc para fechar.
                 </DialogDescription>
                 <SidebarProvider className="items-start">
                     <Sidebar className="hidden md:flex">
@@ -235,14 +234,14 @@ export function SettingsDialog({
                             <div className="flex items-center gap-2 px-4 py-4 border-b">
                                 <SettingsIcon className="w-5 h-5" />
                                 <h2 className="font-semibold text-lg">
-                                    Settings
+                                    Configurações
                                 </h2>
                             </div>
                             <SidebarGroup>
                                 <SidebarGroupContent>
                                     <SidebarMenu
                                         role="navigation"
-                                        aria-label="Settings sections"
+                                        aria-label="Seções de configurações"
                                     >
                                         {settingsNav.map((item, index) => (
                                             <SidebarMenuItem key={item.id}>
@@ -265,7 +264,7 @@ export function SettingsDialog({
                                                             item.id,
                                                         )
                                                     }
-                                                    aria-label={`${item.name} settings`}
+                                                    aria-label={`Configurações de ${item.name}`}
                                                     aria-current={
                                                         activeSection ===
                                                         item.id
@@ -295,14 +294,14 @@ export function SettingsDialog({
                                     <BreadcrumbList>
                                         <BreadcrumbItem className="hidden md:block">
                                             <BreadcrumbPage>
-                                                Settings
+                                                Configurações
                                             </BreadcrumbPage>
                                         </BreadcrumbItem>
                                         <BreadcrumbSeparator className="hidden md:block" />
                                         <BreadcrumbItem>
                                             <BreadcrumbPage>
                                                 {activeNavItem?.name ||
-                                                    "Settings"}
+                                                    "Configurações"}
                                             </BreadcrumbPage>
                                         </BreadcrumbItem>
                                     </BreadcrumbList>
@@ -319,10 +318,10 @@ export function SettingsDialog({
                                 >
                                     <SelectTrigger
                                         className="w-[180px]"
-                                        aria-label="Select settings section"
+                                        aria-label="Selecione a seção de configurações"
                                     >
                                         <SelectValue>
-                                            {activeNavItem?.name || "Settings"}
+                                            {activeNavItem?.name || "Configurações"}
                                         </SelectValue>
                                     </SelectTrigger>
                                     <SelectContent>

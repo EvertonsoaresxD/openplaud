@@ -129,9 +129,9 @@ export function ProvidersSection({
             if (!response.ok) {
                 throw new Error("Failed to save prompt settings");
             }
-            toast.success("Prompt settings saved");
+            toast.success("Configurações de prompt salvas");
         } catch {
-            toast.error("Failed to save prompt settings");
+            toast.error("Falha ao salvar configurações de prompt");
         }
     };
 
@@ -165,7 +165,7 @@ export function ProvidersSection({
     };
 
     const handleDeleteCustomPrompt = async (id: string) => {
-        if (!confirm("Are you sure you want to delete this custom prompt?")) {
+        if (!confirm("Tem certeza de que deseja excluir este prompt personalizado?")) {
             return;
         }
 
@@ -190,7 +190,7 @@ export function ProvidersSection({
             const data = await response.json();
             setProviders(data.providers);
         } catch {
-            toast.error("Failed to refresh providers");
+            toast.error("Falha ao atualizar provedores");
         }
     };
 
@@ -200,7 +200,7 @@ export function ProvidersSection({
     };
 
     const handleDelete = async (id: string) => {
-        if (!confirm("Are you sure you want to delete this provider?")) {
+        if (!confirm("Tem certeza de que deseja excluir este provedor?")) {
             return;
         }
 
@@ -212,16 +212,16 @@ export function ProvidersSection({
 
             if (!response.ok) {
                 const error = await response.json();
-                throw new Error(error.error || "Failed to delete");
+                throw new Error(error.error || "Falha ao excluir");
             }
 
-            toast.success("Provider deleted successfully");
+            toast.success("Provedor excluído com sucesso");
             await refreshProviders();
         } catch (error) {
             toast.error(
                 error instanceof Error
                     ? error.message
-                    : "Failed to delete provider",
+                    : "Falha ao excluir o provedor",
             );
         } finally {
             setDeletingId(null);
@@ -234,7 +234,7 @@ export function ProvidersSection({
                 <div className="flex items-center justify-between">
                     <h2 className="text-lg font-semibold flex items-center gap-2">
                         <Bot className="w-5 h-5" />
-                        AI Settings
+                        Configurações de IA
                     </h2>
                     {aiSubSection === "providers" && (
                         <Button
@@ -242,7 +242,7 @@ export function ProvidersSection({
                             size="sm"
                         >
                             <Plus className="w-4 h-4 mr-2" />
-                            Add Provider
+                            Adicionar Provedor
                         </Button>
                     )}
                 </div>
@@ -258,7 +258,7 @@ export function ProvidersSection({
                                 : "border-transparent text-muted-foreground hover:text-foreground"
                         }`}
                     >
-                        Providers
+                        Provedores
                     </button>
                     <button
                         type="button"
@@ -281,17 +281,17 @@ export function ProvidersSection({
                             <div className="text-center py-12">
                                 <Bot className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
                                 <h3 className="font-semibold mb-2">
-                                    No providers configured
+                                    Nenhum provedor configurado
                                 </h3>
                                 <p className="text-sm text-muted-foreground mb-4">
-                                    Add an AI provider to enable transcription
+                                    Adicione um provedor de IA para habilitar a transcrição
                                 </p>
                                 <Button
                                     onClick={() => setIsAddProviderOpen(true)}
                                     size="sm"
                                 >
                                     <Plus className="w-4 h-4 mr-2" />
-                                    Add Provider
+                                    Adicionar Provedor
                                 </Button>
                             </div>
                         ) : (
@@ -308,18 +308,18 @@ export function ProvidersSection({
                                                 </h3>
                                                 {provider.isDefaultTranscription && (
                                                     <span className="text-xs px-2 py-0.5 bg-primary/10 text-primary rounded border border-primary/20">
-                                                        Transcription
+                                                        Transcrição
                                                     </span>
                                                 )}
                                                 {provider.isDefaultEnhancement && (
                                                     <span className="text-xs px-2 py-0.5 bg-purple-500/10 text-purple-600 rounded border border-purple-500/20">
-                                                        Enhancement
+                                                        Melhorias
                                                     </span>
                                                 )}
                                             </div>
                                             {provider.defaultModel && (
                                                 <p className="text-sm text-muted-foreground">
-                                                    Model:{" "}
+                                                    Modelo:{" "}
                                                     {provider.defaultModel}
                                                 </p>
                                             )}
@@ -375,7 +375,7 @@ export function ProvidersSection({
                                 {/* Selected Prompt */}
                                 <div className="space-y-2">
                                     <Label htmlFor="selected-prompt">
-                                        Active Prompt
+                                        Prompt Ativo
                                     </Label>
                                     <Select
                                         value={selectedPromptId}
@@ -398,7 +398,7 @@ export function ProvidersSection({
                                                         key={preset.id}
                                                         value={preset.id}
                                                     >
-                                                        {preset.name} (Preset)
+                                                        {preset.name} (Predefinição)
                                                     </SelectItem>
                                                 ),
                                             )}
@@ -407,14 +407,13 @@ export function ProvidersSection({
                                                     key={prompt.id}
                                                     value={prompt.id}
                                                 >
-                                                    {prompt.name} (Custom)
+                                                    {prompt.name} (Personalizado)
                                                 </SelectItem>
                                             ))}
                                         </SelectContent>
                                     </Select>
                                     <p className="text-xs text-muted-foreground">
-                                        Select which prompt to use for title
-                                        generation
+                                        Selecione qual prompt usar para a geração de títulos
                                     </p>
                                 </div>
 
@@ -422,7 +421,7 @@ export function ProvidersSection({
                                 <div className="space-y-4">
                                     <div className="flex items-center justify-between">
                                         <h3 className="text-sm font-semibold">
-                                            Preset Prompts
+                                            Prompts Predefinidos
                                         </h3>
                                     </div>
                                     <div className="space-y-2">
@@ -443,7 +442,7 @@ export function ProvidersSection({
                                                                 {selectedPromptId ===
                                                                     preset.id && (
                                                                     <span className="text-xs px-2 py-0.5 bg-primary/10 text-primary rounded border border-primary/20">
-                                                                        Active
+                                                                        Ativo
                                                                     </span>
                                                                 )}
                                                             </div>
@@ -462,7 +461,7 @@ export function ProvidersSection({
                                                                 )
                                                             }
                                                         >
-                                                            View Prompt
+                                                            Ver Prompt
                                                         </Button>
                                                     </div>
                                                 </div>
@@ -475,7 +474,7 @@ export function ProvidersSection({
                                 <div className="space-y-4 pt-4 border-t">
                                     <div className="flex items-center justify-between">
                                         <h3 className="text-sm font-semibold">
-                                            Custom Prompts
+                                            Prompts Personalizados
                                         </h3>
                                         <Button
                                             onClick={() =>
@@ -487,13 +486,12 @@ export function ProvidersSection({
                                             size="sm"
                                         >
                                             <Plus className="w-4 h-4 mr-2" />
-                                            Add Custom Prompt
+                                            Adicionar Prompt Personalizado
                                         </Button>
                                     </div>
                                     {customPrompts.length === 0 ? (
                                         <p className="text-sm text-muted-foreground text-center py-4">
-                                            No custom prompts yet. Create one to
-                                            get started.
+                                            Nenhum prompt personalizado ainda. Crie um para começar.
                                         </p>
                                     ) : (
                                         <div className="space-y-2">
@@ -513,7 +511,7 @@ export function ProvidersSection({
                                                                 {selectedPromptId ===
                                                                     prompt.id && (
                                                                     <span className="text-xs px-2 py-0.5 bg-primary/10 text-primary rounded border border-primary/20">
-                                                                        Active
+                                                                        Ativo
                                                                     </span>
                                                                 )}
                                                             </div>
@@ -528,7 +526,7 @@ export function ProvidersSection({
                                                                     )
                                                                 }
                                                             >
-                                                                View
+                                                                Visualizar
                                                             </Button>
                                                             <Button
                                                                 variant="outline"
@@ -589,7 +587,7 @@ export function ProvidersSection({
                             <DialogDescription>
                                 {PROMPT_PRESETS[
                                     viewingPromptId as keyof typeof PROMPT_PRESETS
-                                ]?.description || "Custom prompt"}
+                                ]?.description || "Prompt personalizado"}
                             </DialogDescription>
                             <div className="mt-4">
                                 <pre className="p-4 bg-muted rounded-md text-sm font-mono whitespace-pre-wrap overflow-x-auto">
@@ -617,20 +615,20 @@ export function ProvidersSection({
                         <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
                             <DialogTitle>
                                 {editingCustomPrompt.id
-                                    ? "Edit Custom Prompt"
-                                    : "Create Custom Prompt"}
+                                    ? "Editar Prompt Personalizado"
+                                    : "Criar Prompt Personalizado"}
                             </DialogTitle>
                             <DialogDescription>
-                                Create a custom prompt for title generation. Use{" "}
+                                Crie um prompt personalizado para a geração de títulos. Use{" "}
                                 <code className="px-1 py-0.5 bg-muted rounded">
                                     {"{transcription}"}
                                 </code>{" "}
-                                as a placeholder for the transcription text.
+                                como um espaço reservado para o texto da transcrição.
                             </DialogDescription>
                             <div className="space-y-4 mt-4">
                                 <div className="space-y-2">
                                     <Label htmlFor="custom-prompt-name">
-                                        Name
+                                        Nome
                                     </Label>
                                     <Input
                                         id="custom-prompt-name"
@@ -641,7 +639,7 @@ export function ProvidersSection({
                                                 name: e.target.value,
                                             })
                                         }
-                                        placeholder="My Custom Prompt"
+                                        placeholder="Meu Prompt Personalizado"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -658,24 +656,24 @@ export function ProvidersSection({
                                                 prompt: e.target.value,
                                             })
                                         }
-                                        placeholder={`You are a title generator for audio recordings. Generate a concise, descriptive title based on the transcription provided.
+                                        placeholder={`Você é um gerador de títulos para gravações de áudio. Gere um título conciso e descritivo com base na transcrição fornecida.
 
-RULES (MUST FOLLOW):
-1. Maximum 60 characters (strict limit)
-2. No quotes, colons, semicolons, or special punctuation marks
-3. Use title case (capitalize important words)
-4. Focus on the main topic, subject, or action discussed
-5. Remove filler words, greetings, and conversational fluff
-6. Be specific and descriptive, not generic
-7. If the transcription is very short or unclear, create a meaningful title based on context
-8. Do not include timestamps, dates, or metadata
-9. Do not use phrases like "Recording about" or "Discussion of"
-10. Return ONLY the title text, nothing else
+REGRAS (DEVE SEGUIR):
+1. Máximo de 60 caracteres (limite estrito)
+2. Sem aspas, dois pontos, ponto e vírgula ou sinais de pontuação especiais
+3. Use o formato do título (letras iniciais maiúsculas nas palavras importantes)
+4. Foco no tópico principal, assunto ou ação discutida
+5. Remova palavras de preenchimento, saudações e conversa fiada
+6. Seja específico e descritivo, não genérico
+7. Se a transcrição for muito curta ou incerta, crie um título significativo com base no contexto
+8. Não inclua marcas de tempo, datas ou metadados
+9. Não use frases como "Gravação sobre" ou "Discussão de"
+10. Retorne APENAS o texto do título, nada mais
 
-Transcription:
+Transcrição:
 {transcription}
 
-Generate the title now:`}
+Gere o título agora:`}
                                     />
                                 </div>
                                 <div className="flex justify-end gap-2">
@@ -685,7 +683,7 @@ Generate the title now:`}
                                             setEditingCustomPrompt(null)
                                         }
                                     >
-                                        Cancel
+                                        Cancelar
                                     </Button>
                                     <Button
                                         onClick={() => {
@@ -694,7 +692,7 @@ Generate the title now:`}
                                                 !editingCustomPrompt.prompt
                                             ) {
                                                 toast.error(
-                                                    "Name and prompt are required",
+                                                    "Nome e prompt são obrigatórios",
                                                 );
                                                 return;
                                             }
@@ -708,8 +706,8 @@ Generate the title now:`}
                                         }
                                     >
                                         {editingCustomPrompt.id
-                                            ? "Save"
-                                            : "Create"}
+                                            ? "Salvar"
+                                            : "Criar"}
                                     </Button>
                                 </div>
                             </div>

@@ -103,7 +103,7 @@ export function OnboardingDialog({
 
     const handlePlaudConnect = async () => {
         if (!bearerToken.trim()) {
-            toast.error("Please enter your bearer token");
+            toast.error("Por favor, informe seu bearer token");
             return;
         }
 
@@ -121,17 +121,17 @@ export function OnboardingDialog({
 
             if (!response.ok) {
                 const error = await response.json();
-                throw new Error(error.error || "Failed to connect");
+                throw new Error(error.error || "Falha ao conectar");
             }
 
-            toast.success("Plaud device connected");
+            toast.success("Dispositivo Plaud conectado");
             setHasPlaudConnection(true);
             setBearerToken("");
         } catch (error) {
             toast.error(
                 error instanceof Error
                     ? error.message
-                    : "Failed to connect to Plaud",
+                    : "Falha ao conectar no Plaud",
             );
         } finally {
             setIsLoading(false);
@@ -157,7 +157,7 @@ export function OnboardingDialog({
             onOpenChange(false);
             router.refresh();
         } catch {
-            toast.error("Failed to complete onboarding");
+            toast.error("Falha ao concluir a configuração inicial");
         }
     };
 
@@ -216,7 +216,7 @@ export function OnboardingDialog({
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto sm:max-w-[600px]">
                 <DialogHeader>
                     <DialogTitle className="text-2xl" hidden>
-                        Welcome to OpenPlaud
+                        Bem-vindo ao OpenPlaud
                     </DialogTitle>
                 </DialogHeader>
 
@@ -228,12 +228,12 @@ export function OnboardingDialog({
                                     <Mic className="w-8 h-8 text-primary" />
                                 </div>
                                 <h3 className="text-xl font-semibold">
-                                    Your AI-Powered Recording Hub
+                                    Seu Hub de Gravações com IA
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    OpenPlaud helps you manage, transcribe, and
-                                    enhance your Plaud recordings with AI. Let's
-                                    set up your account.
+                                    A OpenPlaud te ajuda a gerenciar e transcrever
+                                    suas gravações com IA. Vamos
+                                    configurar a sua conta.
                                 </p>
                             </div>
 
@@ -242,13 +242,13 @@ export function OnboardingDialog({
                                     <CardHeader>
                                         <CardTitle className="text-base flex items-center gap-2">
                                             <Mic className="w-4 h-4" />
-                                            Connect Your Device
+                                            Conecte seu Dispositivo
                                         </CardTitle>
                                     </CardHeader>
                                     <CardContent>
                                         <p className="text-sm text-muted-foreground">
-                                            Link your Plaud device to start
-                                            syncing recordings automatically
+                                            Vincule seu botão Plaud para sincronizar
+                                            suas gravações de modo automático.
                                         </p>
                                     </CardContent>
                                 </Card>
@@ -257,13 +257,13 @@ export function OnboardingDialog({
                                     <CardHeader>
                                         <CardTitle className="text-base flex items-center gap-2">
                                             <Bot className="w-4 h-4" />
-                                            Set Up AI Provider
+                                            Adicione IA
                                         </CardTitle>
                                     </CardHeader>
                                     <CardContent>
                                         <p className="text-sm text-muted-foreground">
-                                            Configure an AI provider for
-                                            automatic transcriptions
+                                            Ajuste as chaves de API da LLM
+                                            e transcreva local ou remotamente.
                                         </p>
                                     </CardContent>
                                 </Card>
@@ -272,13 +272,13 @@ export function OnboardingDialog({
                                     <CardHeader>
                                         <CardTitle className="text-base flex items-center gap-2">
                                             <Sparkles className="w-4 h-4" />
-                                            Start Recording
+                                            Comece a Gravar
                                         </CardTitle>
                                     </CardHeader>
                                     <CardContent>
                                         <p className="text-sm text-muted-foreground">
-                                            You're all set! Start recording and
-                                            let AI do the work
+                                            Tudo pronto! Pressione o botão para gravar
+                                            e confira os resultados.
                                         </p>
                                     </CardContent>
                                 </Card>
@@ -293,11 +293,11 @@ export function OnboardingDialog({
                                     <Mic className="w-8 h-8 text-primary" />
                                 </div>
                                 <h3 className="text-xl font-semibold">
-                                    Connect Your Plaud Device
+                                    Conecte seu Plaud
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Enter your Plaud bearer token to sync
-                                    recordings automatically
+                                    Insira seu Bearer token para sincronizar as
+                                    gravações do aparelho à máquina
                                 </p>
                             </div>
 
@@ -308,11 +308,11 @@ export function OnboardingDialog({
                                             <CheckCircle2 className="w-5 h-5 text-primary" />
                                             <div className="flex-1">
                                                 <p className="font-medium">
-                                                    Device Connected
+                                                    Dispositivo Conectado
                                                 </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    Your Plaud device is already
-                                                    connected
+                                                    Um Plaud já foi conectado
+                                                    à sua conta
                                                 </p>
                                             </div>
                                             <Button
@@ -322,7 +322,7 @@ export function OnboardingDialog({
                                                     setHasPlaudConnection(false)
                                                 }
                                             >
-                                                Reconnect
+                                                Reconectar
                                             </Button>
                                         </div>
                                     </CardContent>
@@ -332,7 +332,7 @@ export function OnboardingDialog({
                                     <CardContent className="pt-6 space-y-4">
                                         <div className="space-y-2">
                                             <Label htmlFor="api-server">
-                                                API Server
+                                                Servidor da API
                                             </Label>
                                             <Select
                                                 value={server}
@@ -346,7 +346,7 @@ export function OnboardingDialog({
                                                     id="api-server"
                                                     disabled={isLoading}
                                                 >
-                                                    <SelectValue placeholder="Select API server" />
+                                                    <SelectValue placeholder="Selecione o servidor da API" />
                                                 </SelectTrigger>
                                                 <SelectContent className="z-[200]">
                                                     {(
@@ -394,7 +394,7 @@ export function OnboardingDialog({
                                             <Input
                                                 id="bearer-token"
                                                 type="password"
-                                                placeholder="Enter your Plaud bearer token"
+                                                placeholder="Insira o seu Plaud bearer token"
                                                 value={bearerToken}
                                                 onChange={(e) =>
                                                     setBearerToken(
@@ -404,12 +404,11 @@ export function OnboardingDialog({
                                                 disabled={isLoading}
                                             />
                                             <p className="text-xs text-muted-foreground">
-                                                Open plaud.ai in a browser, log
-                                                in, open DevTools (F12) →
-                                                Network tab, refresh and copy
-                                                the Authorization header value
-                                                from any request to the Plaud
-                                                API server.
+                                                Acesse plaud.ai por um computador, 
+                                                aperte (F12) abrindo console → Network (Rede), 
+                                                atualize a página e localize o cabeçalho "Authorization" 
+                                                nas requests para a API. Copie aquele calor que inicia
+                                                como "Bearer ey...".
                                             </p>
                                         </div>
 
@@ -421,8 +420,8 @@ export function OnboardingDialog({
                                             className="w-full"
                                         >
                                             {isLoading
-                                                ? "Connecting..."
-                                                : "Connect Device"}
+                                                ? "Conectando..."
+                                                : "Conectar Dispositivo"}
                                         </Button>
                                     </CardContent>
                                 </Card>
@@ -437,11 +436,11 @@ export function OnboardingDialog({
                                     <Bot className="w-8 h-8 text-primary" />
                                 </div>
                                 <h3 className="text-xl font-semibold">
-                                    Set Up AI Provider
+                                    Configure IA (Chaves)
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Configure an AI provider to enable automatic
-                                    transcriptions
+                                    Adicione uma API Key de IA para ativar a
+                                    transcrição e resumos gerados.
                                 </p>
                             </div>
 
@@ -452,11 +451,11 @@ export function OnboardingDialog({
                                             <CheckCircle2 className="w-5 h-5 text-primary" />
                                             <div className="flex-1">
                                                 <p className="font-medium">
-                                                    AI Provider Configured
+                                                    IA Configurada!
                                                 </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    You already have an AI
-                                                    provider set up
+                                                    Você detectou uma chave
+                                                    para processar textos.
                                                 </p>
                                             </div>
                                         </div>
@@ -466,9 +465,9 @@ export function OnboardingDialog({
                                 <Card className="gap-0 py-4">
                                     <CardContent className="pt-6 space-y-4">
                                         <p className="text-sm text-muted-foreground">
-                                            You can set up an AI provider later
-                                            in Settings. This enables automatic
-                                            transcription of your recordings.
+                                            Você pode ajustar a sua chave depois
+                                            no menu Configurações. Isto habilitará
+                                            A automação dos serviços.
                                         </p>
                                         <Button
                                             onClick={() => {
@@ -479,7 +478,7 @@ export function OnboardingDialog({
                                             variant="outline"
                                             className="w-full"
                                         >
-                                            Go to Settings
+                                            Ir para Configurações
                                         </Button>
                                     </CardContent>
                                 </Card>
@@ -494,11 +493,11 @@ export function OnboardingDialog({
                                     <CheckCircle2 className="w-8 h-8 text-primary" />
                                 </div>
                                 <h3 className="text-xl font-semibold">
-                                    You're All Set!
+                                    Tudo Pronto!
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Start recording and let OpenPlaud handle the
-                                    rest
+                                    Comece gravando os áudios e nós
+                                    gerenciamos todo o restante!
                                 </p>
                             </div>
 
@@ -509,12 +508,11 @@ export function OnboardingDialog({
                                             <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
                                             <div>
                                                 <p className="font-medium">
-                                                    Recordings sync
-                                                    automatically
+                                                    Sincronização em background
                                                 </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    Your Plaud device will sync
-                                                    recordings in the background
+                                                    Seus áudios serão baixados
+                                                    no serviço nos bastidores
                                                 </p>
                                             </div>
                                         </div>
@@ -522,12 +520,11 @@ export function OnboardingDialog({
                                             <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
                                             <div>
                                                 <p className="font-medium">
-                                                    AI-powered transcriptions
+                                                    Diários via Inteligência Artificial
                                                 </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    Set up an AI provider to
-                                                    transcribe recordings
-                                                    automatically
+                                                    Utilize das potentes IA locais ou remotas 
+                                                    na transcrição
                                                 </p>
                                             </div>
                                         </div>
@@ -535,11 +532,10 @@ export function OnboardingDialog({
                                             <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
                                             <div>
                                                 <p className="font-medium">
-                                                    Customize your experience
+                                                    Personalize livremente
                                                 </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    Adjust settings anytime from
-                                                    the Settings menu
+                                                    Altere o tema, o bucket e mais na aba Ajustes.
                                                 </p>
                                             </div>
                                         </div>
@@ -554,7 +550,7 @@ export function OnboardingDialog({
                             {getPrevStep() && (
                                 <Button variant="outline" onClick={handlePrev}>
                                     <ArrowLeft className="w-4 h-4 mr-2" />
-                                    Previous
+                                    Voltar
                                 </Button>
                             )}
                         </div>
@@ -588,18 +584,18 @@ export function OnboardingDialog({
                                             handleSkipAiProvider();
                                     }}
                                 >
-                                    Skip
+                                    Pular
                                 </Button>
                             )}
                             {step === "complete" ? (
                                 <Button onClick={handleComplete}>
-                                    Get Started
+                                    Começar
                                     <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
                             ) : (
                                 getNextStep() && (
                                     <Button onClick={handleNext}>
-                                        Next
+                                        Avançar
                                         <ArrowRight className="w-4 h-4 ml-2" />
                                     </Button>
                                 )
