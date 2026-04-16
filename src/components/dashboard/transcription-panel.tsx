@@ -103,13 +103,13 @@ export function TranscriptionPanel({
             if (response.ok) {
                 const data = await response.json();
                 setSummaryData(data);
-                toast.success("Summary generated");
+                toast.success("Resumo gerado");
             } else {
                 const error = await response.json();
-                toast.error(error.error || "Summary generation failed");
+                toast.error(error.error || "Falha ao gerar o resumo");
             }
         } catch {
-            toast.error("Failed to generate summary");
+            toast.error("Falha ao gerar o resumo");
         } finally {
             setIsSummarizing(false);
         }
@@ -127,14 +127,14 @@ export function TranscriptionPanel({
             );
 
             if (response.ok) {
-                toast.success("Summary deleted");
+                toast.success("Resumo excluído");
             } else {
                 setSummaryData(previous);
-                toast.error("Failed to delete summary");
+                toast.error("Falha ao excluir o resumo");
             }
         } catch {
             setSummaryData(previous);
-            toast.error("Failed to delete summary");
+            toast.error("Falha ao excluir o resumo");
         }
     }, [recording.id, summaryData]);
 
@@ -146,7 +146,7 @@ export function TranscriptionPanel({
                     <div className="flex items-center justify-between">
                         <CardTitle className="flex items-center gap-2">
                             <FileText className="w-5 h-5" />
-                            Transcription
+                            Transcrição
                         </CardTitle>
                         <div className="flex items-center gap-2">
                             {transcription?.text && (
@@ -157,7 +157,7 @@ export function TranscriptionPanel({
                                     disabled={isTranscribing}
                                 >
                                     <RefreshCw className="w-4 h-4 mr-2" />
-                                    Re-transcribe
+                                    Transcrever Novamente
                                 </Button>
                             )}
                             {!transcription?.text && !isTranscribing && (
@@ -167,7 +167,7 @@ export function TranscriptionPanel({
                                     disabled={isTranscribing}
                                 >
                                     <Sparkles className="w-4 h-4 mr-2" />
-                                    Transcribe
+                                    Transcrever
                                 </Button>
                             )}
                         </div>
@@ -178,7 +178,7 @@ export function TranscriptionPanel({
                         <div className="flex flex-col items-center justify-center py-12">
                             <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full mb-4" />
                             <p className="text-sm text-muted-foreground">
-                                Transcribing audio...
+                                Transcrevendo áudio...
                             </p>
                         </div>
                     ) : transcription?.text ? (
@@ -193,7 +193,7 @@ export function TranscriptionPanel({
                                     <div className="flex items-center gap-1">
                                         <Languages className="w-3 h-3" />
                                         <span>
-                                            Language: {transcription.language}
+                                            Idioma: {transcription.language}
                                         </span>
                                     </div>
                                 )}
@@ -202,10 +202,10 @@ export function TranscriptionPanel({
                                         ? transcription.text.trim().split(/\s+/)
                                               .length
                                         : 0}{" "}
-                                    words
+                                    palavras
                                 </div>
                                 <div>
-                                    {transcription.text.length} characters
+                                    {transcription.text.length} caracteres
                                 </div>
                             </div>
                         </div>
@@ -213,11 +213,11 @@ export function TranscriptionPanel({
                         <div className="flex flex-col items-center justify-center py-12 text-center">
                             <FileText className="w-12 h-12 text-muted-foreground mb-4" />
                             <p className="text-sm text-muted-foreground mb-4">
-                                No transcription available
+                                Nenhuma transcrição disponível
                             </p>
                             <Button onClick={onTranscribe} size="sm">
                                 <Sparkles className="w-4 h-4 mr-2" />
-                                Generate Transcription
+                                Gerar Transcrição
                             </Button>
                         </div>
                     )}
@@ -231,7 +231,7 @@ export function TranscriptionPanel({
                         <div className="flex items-center justify-between">
                             <CardTitle className="flex items-center gap-2">
                                 <ListChecks className="w-5 h-5" />
-                                Summary
+                                Resumo
                             </CardTitle>
                             <div className="flex items-center gap-2">
                                 {!isSummarizing && (
@@ -267,17 +267,17 @@ export function TranscriptionPanel({
                                     {isSummarizing ? (
                                         <>
                                             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                            Generating...
+                                            Gerando...
                                         </>
                                     ) : summaryData ? (
                                         <>
                                             <RefreshCw className="w-4 h-4 mr-2" />
-                                            Re-generate
+                                            Gerar Novamente
                                         </>
                                     ) : (
                                         <>
                                             <Sparkles className="w-4 h-4 mr-2" />
-                                            Summarize
+                                            Resumir
                                         </>
                                     )}
                                 </Button>
@@ -289,7 +289,7 @@ export function TranscriptionPanel({
                             <div className="flex flex-col items-center justify-center py-8">
                                 <Loader2 className="w-8 h-8 animate-spin text-primary mb-4" />
                                 <p className="text-sm text-muted-foreground">
-                                    Generating summary...
+                                    Gerando resumo...
                                 </p>
                             </div>
                         ) : summaryData?.summary ? (
@@ -307,8 +307,8 @@ export function TranscriptionPanel({
                                         <ChevronDown className="w-4 h-4" />
                                     )}
                                     {summaryExpanded
-                                        ? "Collapse"
-                                        : "Expand summary"}
+                                        ? "Recolher"
+                                        : "Expandir resumo"}
                                 </button>
 
                                 {summaryExpanded && (
@@ -326,7 +326,7 @@ export function TranscriptionPanel({
                                                 0 && (
                                                 <div>
                                                     <h4 className="text-sm font-medium mb-2">
-                                                        Key Points
+                                                        Pontos Principais
                                                     </h4>
                                                     <ul className="space-y-1">
                                                         {summaryData.keyPoints.map(
@@ -355,7 +355,7 @@ export function TranscriptionPanel({
                                                 0 && (
                                                 <div>
                                                     <h4 className="text-sm font-medium mb-2">
-                                                        Action Items
+                                                        Itens de Ação
                                                     </h4>
                                                     <ul className="space-y-1">
                                                         {summaryData.actionItems.map(
@@ -399,7 +399,7 @@ export function TranscriptionPanel({
                                                 className="text-destructive hover:text-destructive"
                                             >
                                                 <Trash2 className="w-4 h-4 mr-1" />
-                                                Delete
+                                                Excluir
                                             </Button>
                                         </div>
                                     </div>
@@ -409,8 +409,8 @@ export function TranscriptionPanel({
                             <div className="flex flex-col items-center justify-center py-8 text-center">
                                 <ListChecks className="w-10 h-10 text-muted-foreground mb-3" />
                                 <p className="text-sm text-muted-foreground">
-                                    No summary yet. Click "Summarize" to
-                                    generate one.
+                                    Nenhum resumo ainda. Clique em "Resumir" para
+                                    gerar um.
                                 </p>
                             </div>
                         )}

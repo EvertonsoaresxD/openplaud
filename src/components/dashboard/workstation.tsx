@@ -125,10 +125,10 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
             if (syncSettings?.syncNotifications !== false) {
                 if (newRecordings > 0) {
                     toast.success(
-                        `Synced ${newRecordings} new recording${newRecordings !== 1 ? "s" : ""}`,
+                        `Sincronizou ${newRecordings} nova(s) gravação(ões)`,
                     );
                 } else {
-                    toast.success("Sync complete - no new recordings");
+                    toast.success("Sincronização concluída - nenhuma nova gravação");
                 }
             }
 
@@ -176,14 +176,14 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
             );
 
             if (response.ok) {
-                toast.success("Transcription complete");
+                toast.success("Transcrição concluída");
                 router.refresh();
             } else {
                 const error = await response.json();
-                toast.error(error.error || "Transcription failed");
+                toast.error(error.error || "A transcrição falhou");
             }
         } catch {
-            toast.error("Failed to transcribe recording");
+            toast.error("Falha ao transcrever gravação");
         } finally {
             setIsTranscribing(false);
         }
@@ -207,14 +207,14 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
 
                 if (response.ok) {
                     const data = await response.json();
-                    toast.success(`"${data.filename}" uploaded`);
+                    toast.success(`"${data.filename}" enviado`);
                     router.refresh();
                 } else {
                     const error = await response.json();
-                    toast.error(error.error || "Upload failed");
+                    toast.error(error.error || "Falha no envio");
                 }
             } catch {
-                toast.error("Failed to upload recording");
+                toast.error("Falha ao enviar gravação");
             } finally {
                 setIsUploading(false);
             }
@@ -228,10 +228,9 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                 <div className="container mx-auto px-4 py-6 max-w-7xl">
                     <div className="flex items-center justify-between mb-6">
                         <div>
-                            <h1 className="text-3xl font-bold">Recordings</h1>
+                            <h1 className="text-3xl font-bold">Gravações</h1>
                             <p className="text-muted-foreground text-sm mt-1">
-                                {recordings.length} recording
-                                {recordings.length !== 1 ? "s" : ""}
+                                {recordings.length} {recordings.length === 1 ? "gravação" : "gravações"}
                             </p>
                         </div>
                         <div className="flex items-center gap-3">
@@ -252,12 +251,12 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                                 {isAutoSyncing ? (
                                     <>
                                         <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                                        Syncing...
+                                        Sincronizando...
                                     </>
                                 ) : (
                                     <>
                                         <RefreshCw className="w-4 h-4 mr-2" />
-                                        Sync Device
+                                        Sincronizar Dispositivo
                                     </>
                                 )}
                             </Button>
@@ -276,7 +275,7 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                                 className="h-9"
                             >
                                 <Upload className="w-4 h-4 mr-2" />
-                                {isUploading ? "Uploading..." : "Upload Audio"}
+                                {isUploading ? "Enviando..." : "Enviar Áudio"}
                             </Button>
                             <Button
                                 onClick={() => setSettingsOpen(true)}
@@ -293,11 +292,11 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                             <CardContent className="flex flex-col items-center justify-center py-16">
                                 <Mic className="w-16 h-16 text-muted-foreground mb-4" />
                                 <h3 className="text-lg font-semibold mb-2">
-                                    No recordings yet
+                                    Nenhuma gravação ainda
                                 </h3>
                                 <p className="text-muted-foreground text-sm mb-6 text-center max-w-md">
-                                    Sync your Plaud device to import your
-                                    recordings and start transcribing them.
+                                    Sincronize seu dispositivo Plaud para importar suas
+                                    gravações e começar a transcrevê-las.
                                 </p>
                                 <Button
                                     onClick={handleSync}
@@ -306,12 +305,12 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                                     {isAutoSyncing ? (
                                         <>
                                             <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                                            Syncing...
+                                            Sincronizando...
                                         </>
                                     ) : (
                                         <>
                                             <RefreshCw className="w-4 h-4 mr-2" />
-                                            Sync Device
+                                            Sincronizar Dispositivo
                                         </>
                                     )}
                                 </Button>
@@ -363,8 +362,8 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                                     <Card>
                                         <CardContent className="py-16 text-center">
                                             <p className="text-muted-foreground">
-                                                Select a recording to view
-                                                details and transcription
+                                                Selecione uma gravação para ver
+                                                detalhes e transcrição
                                             </p>
                                         </CardContent>
                                     </Card>

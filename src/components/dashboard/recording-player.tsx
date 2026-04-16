@@ -142,7 +142,7 @@ export function RecordingPlayer({ recording, onEnded }: RecordingPlayerProps) {
             audioRef.current.playbackRate = playbackSpeed;
             audioRef.current.play().catch((error) => {
                 console.error("Error playing audio:", error);
-                toast.error("Failed to play audio");
+                toast.error("Falha ao reproduzir o áudio");
             });
         }
         setIsPlaying(!isPlaying);
@@ -288,7 +288,7 @@ export function RecordingPlayer({ recording, onEnded }: RecordingPlayerProps) {
                             variant="default"
                             size="sm"
                             className="w-12 h-8 font-mono text-xs px-2"
-                            title="Click to cycle playback speed"
+                            title="Clique para alterar a velocidade de reprodução"
                         >
                             {playbackSpeedOptions.find(
                                 (opt) => opt.value === playbackSpeed,

@@ -142,10 +142,10 @@ export function RecordingList({
                             disabled={currentPage === 1}
                             className="text-sm text-muted-foreground hover:text-foreground disabled:opacity-50"
                         >
-                            Previous
+                            Anterior
                         </button>
                         <span className="text-sm text-muted-foreground">
-                            Page {currentPage} of {totalPages}
+                            Página {currentPage} de {totalPages}
                         </span>
                         <button
                             type="button"
@@ -157,7 +157,7 @@ export function RecordingList({
                             disabled={currentPage === totalPages}
                             className="text-sm text-muted-foreground hover:text-foreground disabled:opacity-50"
                         >
-                            Next
+                            Próximo
                         </button>
                     </div>
                 )}
