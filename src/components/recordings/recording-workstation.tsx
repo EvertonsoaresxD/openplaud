@@ -39,14 +39,14 @@ export function RecordingWorkstation({
             );
 
             if (response.ok) {
-                toast.success("Transcription complete");
+                toast.success("Transcrição concluída");
                 router.refresh();
             } else {
                 const error = await response.json();
-                toast.error(error.error || "Transcription failed");
+                toast.error(error.error || "Falha na transcrição");
             }
         } catch {
-            toast.error("Failed to transcribe recording");
+            toast.error("Falha ao transcrever a gravação");
         } finally {
             setIsTranscribing(false);
         }
@@ -87,13 +87,13 @@ export function RecordingWorkstation({
                     {/* Metadata */}
                     <Card>
                         <CardHeader>
-                            <CardTitle>Details</CardTitle>
+                            <CardTitle>Detalhes</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                                 <div>
                                     <div className="text-muted-foreground text-xs mb-1">
-                                        Duration
+                                        Duração
                                     </div>
                                     <div className="font-medium">
                                         {Math.floor(recording.duration / 60000)}
@@ -105,7 +105,7 @@ export function RecordingWorkstation({
                                 </div>
                                 <div>
                                     <div className="text-muted-foreground text-xs mb-1">
-                                        File Size
+                                        Tamanho do Arquivo
                                     </div>
                                     <div className="font-medium">
                                         {(
@@ -117,7 +117,7 @@ export function RecordingWorkstation({
                                 </div>
                                 <div>
                                     <div className="text-muted-foreground text-xs mb-1">
-                                        Device
+                                        Dispositivo
                                     </div>
                                     <div className="font-mono text-xs truncate">
                                         {recording.deviceSn}
@@ -125,7 +125,7 @@ export function RecordingWorkstation({
                                 </div>
                                 <div>
                                     <div className="text-muted-foreground text-xs mb-1">
-                                        Date
+                                        Data
                                     </div>
                                     <div className="font-medium">
                                         {new Date(

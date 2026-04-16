@@ -95,10 +95,10 @@ export function TranscriptionSection({
                     errorData.error?.includes("No transcription API")
                 ) {
                     toast.error(
-                        "Please configure an AI provider in Settings first",
+                        "Por favor, configure um provedor de IA nas Configurações primeiro",
                     );
                 } else {
-                    toast.error(errorData.error || "Transcription failed");
+                    toast.error(errorData.error || "Falha na transcrição");
                 }
                 return;
             }
@@ -110,9 +110,9 @@ export function TranscriptionSection({
             // Invalidate cached summary — it was based on old text
             setSummaryData(null);
             setSummaryFetchKey((k) => k + 1);
-            toast.success("Transcription complete");
+            toast.success("Transcrição concluída");
         } catch {
-            toast.error("Transcription failed. Please try again.");
+            toast.error("Falha na transcrição. Por favor, tente novamente.");
         } finally {
             setIsProcessing(false);
         }
@@ -133,13 +133,13 @@ export function TranscriptionSection({
             if (response.ok) {
                 const data = await response.json();
                 setSummaryData(data);
-                toast.success("Summary generated");
+                toast.success("Resumo gerado");
             } else {
                 const error = await response.json();
-                toast.error(error.error || "Summary generation failed");
+                toast.error(error.error || "Falha na geração do resumo");
             }
         } catch {
-            toast.error("Failed to generate summary");
+            toast.error("Falha ao gerar resumo");
         } finally {
             setIsSummarizing(false);
         }
@@ -157,14 +157,14 @@ export function TranscriptionSection({
             );
 
             if (response.ok) {
-                toast.success("Summary deleted");
+                toast.success("Resumo excluído");
             } else {
                 setSummaryData(previous);
-                toast.error("Failed to delete summary");
+                toast.error("Falha ao excluir resumo");
             }
         } catch {
             setSummaryData(previous);
-            toast.error("Failed to delete summary");
+            toast.error("Falha ao excluir resumo");
         }
     }, [recordingId, summaryData]);
 
@@ -175,7 +175,7 @@ export function TranscriptionSection({
                 <div className="space-y-4">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <div className="flex flex-wrap items-center gap-3">
-                            <h2 className="text-xl font-bold">Transcription</h2>
+                            <h2 className="text-xl font-bold">Transcrição</h2>
                             {detectedLanguage && (
                                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-panel-inset">
                                     <LEDIndicator
@@ -184,7 +184,7 @@ export function TranscriptionSection({
                                         size="sm"
                                     />
                                     <span className="text-label text-xs">
-                                        Lang:{" "}
+                                        Idioma:{" "}
                                         <span className="font-mono uppercase text-accent-cyan">
                                             {detectedLanguage}
                                         </span>
@@ -204,10 +204,10 @@ export function TranscriptionSection({
                             className="w-full md:w-auto"
                         >
                             {isProcessing
-                                ? "Processing..."
+                                ? "Processando..."
                                 : transcription
-                                  ? "Re-transcribe"
-                                  : "Transcribe"}
+                                  ? "Re-transcrever"
+                                  : "Transcrever"}
                         </MetalButton>
                     </div>
 
@@ -226,11 +226,11 @@ export function TranscriptionSection({
                                 className="mx-auto mb-4"
                             />
                             <p className="text-muted-foreground mb-2">
-                                No transcription yet
+                                Sem transcrição ainda
                             </p>
                             <p className="text-sm text-text-muted">
-                                Click &quot;Transcribe&quot; to generate a
-                                transcription
+                                Clique em &quot;Transcrever&quot; para gerar uma
+                                transcrição
                             </p>
                         </Panel>
                     )}
@@ -243,7 +243,7 @@ export function TranscriptionSection({
                     <div className="space-y-4">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                             <div className="flex items-center gap-3">
-                                <h2 className="text-xl font-bold">Summary</h2>
+                                <h2 className="text-xl font-bold">Resumo</h2>
                             </div>
                             <div className="flex items-center gap-2">
                                 {!isSummarizing && (
@@ -277,17 +277,17 @@ export function TranscriptionSection({
                                     {isSummarizing ? (
                                         <>
                                             <Loader2 className="w-4 h-4 mr-2 animate-spin inline" />
-                                            Generating...
+                                            Gerando...
                                         </>
                                     ) : summaryData ? (
                                         <>
                                             <RefreshCw className="w-4 h-4 mr-2 inline" />
-                                            Re-generate
+                                            Gerar novamente
                                         </>
                                     ) : (
                                         <>
                                             <Sparkles className="w-4 h-4 mr-2 inline" />
-                                            Summarize
+                                            Resumir
                                         </>
                                     )}
                                 </MetalButton>
@@ -298,7 +298,7 @@ export function TranscriptionSection({
                             <Panel variant="inset" className="text-center py-8">
                                 <Loader2 className="w-8 h-8 animate-spin text-accent-cyan mx-auto mb-4" />
                                 <p className="text-muted-foreground">
-                                    Generating summary...
+                                    Gerando resumo...
                                 </p>
                             </Panel>
                         ) : summaryData?.summary ? (
@@ -316,8 +316,8 @@ export function TranscriptionSection({
                                         <ChevronDown className="w-4 h-4" />
                                     )}
                                     {summaryExpanded
-                                        ? "Collapse"
-                                        : "Expand summary"}
+                                        ? "Recolher"
+                                        : "Expandir resumo"}
                                 </button>
 
                                 {summaryExpanded && (
@@ -333,7 +333,7 @@ export function TranscriptionSection({
                                                 0 && (
                                                 <div>
                                                     <h4 className="text-sm font-medium mb-2">
-                                                        Key Points
+                                                        Pontos Principais
                                                     </h4>
                                                     <ul className="space-y-1">
                                                         {summaryData.keyPoints.map(
@@ -361,7 +361,7 @@ export function TranscriptionSection({
                                                 0 && (
                                                 <div>
                                                     <h4 className="text-sm font-medium mb-2">
-                                                        Action Items
+                                                        Itens de Ação
                                                     </h4>
                                                     <ul className="space-y-1">
                                                         {summaryData.actionItems.map(
@@ -403,7 +403,7 @@ export function TranscriptionSection({
                                                 className="text-xs"
                                             >
                                                 <Trash2 className="w-3.5 h-3.5 mr-1 inline" />
-                                                Delete
+                                                Excluir
                                             </MetalButton>
                                         </div>
                                     </div>
@@ -413,8 +413,8 @@ export function TranscriptionSection({
                             <Panel variant="inset" className="text-center py-8">
                                 <ListChecks className="w-10 h-10 text-muted-foreground mx-auto mb-3" />
                                 <p className="text-sm text-muted-foreground">
-                                    No summary yet. Click &quot;Summarize&quot;
-                                    to generate one.
+                                    Sem resumo ainda. Clique em &quot;Resumir&quot;
+                                    para gerar um.
                                 </p>
                             </Panel>
                         )}
