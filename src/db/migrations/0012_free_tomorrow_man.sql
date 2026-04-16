@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS vector;
+--> statement-breakpoint
 CREATE TABLE "transcription_chunks" (
 	"id" text PRIMARY KEY NOT NULL,
 	"transcription_id" text NOT NULL,
