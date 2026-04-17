@@ -1,9 +1,10 @@
 "use client";
 
-import { Mic, RefreshCw, Settings, Upload } from "lucide-react";
+import { Mic, RefreshCw, Settings, Sparkles, Upload } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
+import { AiChatDialog } from "@/components/chat/ai-chat-dialog";
 import { OnboardingDialog } from "@/components/onboarding-dialog";
 import { SettingsDialog } from "@/components/settings-dialog";
 import { SyncStatus } from "@/components/sync-status";
@@ -41,6 +42,7 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
     const uploadInputRef = useRef<HTMLInputElement>(null);
     const [settingsOpen, setSettingsOpen] = useState(false);
     const [onboardingOpen, setOnboardingOpen] = useState(false);
+    const [aiChatOpen, setAiChatOpen] = useState(false);
     const [providers, setProviders] = useState<
         Array<{
             id: string;
@@ -128,7 +130,9 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                         `Sincronizou ${newRecordings} nova(s) gravação(ões)`,
                     );
                 } else {
-                    toast.success("Sincronização concluída - nenhuma nova gravação");
+                    toast.success(
+                        "Sincronização concluída - nenhuma nova gravação",
+                    );
                 }
             }
 
@@ -230,7 +234,10 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                         <div>
                             <h1 className="text-3xl font-bold">Gravações</h1>
                             <p className="text-muted-foreground text-sm mt-1">
-                                {recordings.length} {recordings.length === 1 ? "gravação" : "gravações"}
+                                {recordings.length}{" "}
+                                {recordings.length === 1
+                                    ? "gravação"
+                                    : "gravações"}
                             </p>
                         </div>
                         <div className="flex items-center gap-3">
@@ -278,9 +285,19 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                                 {isUploading ? "Enviando..." : "Enviar Áudio"}
                             </Button>
                             <Button
+                                onClick={() => setAiChatOpen(true)}
+                                variant="default"
+                                size="sm"
+                                className="h-9 gap-2 bg-gradient-to-r from-violet-500 to-indigo-500 hover:from-violet-600 hover:to-indigo-600 text-white shadow-md transition-all hover:shadow-lg active:scale-95"
+                            >
+                                <Sparkles className="w-4 h-4" />
+                                Assistente
+                            </Button>
+                            <Button
                                 onClick={() => setSettingsOpen(true)}
                                 variant="outline"
                                 size="icon"
+                                className="h-9 w-9"
                             >
                                 <Settings className="w-4 h-4" />
                             </Button>
@@ -295,8 +312,9 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                                     Nenhuma gravação ainda
                                 </h3>
                                 <p className="text-muted-foreground text-sm mb-6 text-center max-w-md">
-                                    Sincronize seu dispositivo Plaud para importar suas
-                                    gravações e começar a transcrevê-las.
+                                    Sincronize seu dispositivo Plaud para
+                                    importar suas gravações e começar a
+                                    transcrevê-las.
                                 </p>
                                 <Button
                                     onClick={handleSync}
@@ -392,6 +410,8 @@ export function Workstation({ recordings, transcriptions }: WorkstationProps) {
                     router.refresh();
                 }}
             />
+
+            <AiChatDialog open={aiChatOpen} onOpenChange={setAiChatOpen} />
         </>
     );
 }

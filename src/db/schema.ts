@@ -213,13 +213,13 @@ export const transcriptionChunks = pgTable(
     },
     (table) => ({
         // Index for looking up chunks by transcription
-        transcriptionIdIdx: index("transcription_chunks_transcription_id_idx").on(
-            table.transcriptionId,
-        ),
+        transcriptionIdIdx: index(
+            "transcription_chunks_transcription_id_idx",
+        ).on(table.transcriptionId),
         // Vector index for efficient similarity search using HNSW
         embeddingIndex: index("transcription_chunks_embedding_idx").using(
             "hnsw",
-            table.embedding.op("vector_cosine_ops")
+            table.embedding.op("vector_cosine_ops"),
         ),
     }),
 );

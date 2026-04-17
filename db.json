@@ -3,9 +3,7 @@
         "Id": "7cf4f3cbc4c6788c96a77f27af5d045f42e709e5f9f0c21860898227e1be4961",
         "Created": "2026-04-08T11:31:05.222073705Z",
         "Path": "docker-entrypoint.sh",
-        "Args": [
-            "postgres"
-        ],
+        "Args": ["postgres"],
         "State": {
             "Status": "created",
             "Running": false,
@@ -33,9 +31,7 @@
         "AppArmorProfile": "",
         "ExecIDs": null,
         "HostConfig": {
-            "Binds": [
-                "openplaud_pgdata:/var/lib/postgresql/data:rw"
-            ],
+            "Binds": ["openplaud_pgdata:/var/lib/postgresql/data:rw"],
             "ContainerIDFile": "",
             "LogConfig": {
                 "Type": "json-file",
@@ -57,10 +53,7 @@
             "AutoRemove": false,
             "VolumeDriver": "",
             "VolumesFrom": null,
-            "ConsoleSize": [
-                0,
-                0
-            ],
+            "ConsoleSize": [0, 0],
             "CapAdd": null,
             "CapDrop": null,
             "CgroupnsMode": "private",
@@ -179,14 +172,9 @@
                 "DOCKER_PG_LLVM_DEPS=llvm19-dev \t\tclang19",
                 "PGDATA=/var/lib/postgresql/data"
             ],
-            "Cmd": [
-                "postgres"
-            ],
+            "Cmd": ["postgres"],
             "Healthcheck": {
-                "Test": [
-                    "CMD-SHELL",
-                    "pg_isready -U postgres"
-                ],
+                "Test": ["CMD-SHELL", "pg_isready -U postgres"],
                 "Interval": 10000000000,
                 "Timeout": 5000000000,
                 "Retries": 5
@@ -196,9 +184,7 @@
                 "/var/lib/postgresql/data": {}
             },
             "WorkingDir": "/",
-            "Entrypoint": [
-                "docker-entrypoint.sh"
-            ],
+            "Entrypoint": ["docker-entrypoint.sh"],
             "Labels": {
                 "com.docker.compose.config-hash": "4a1bd1431b25251dc9caefae1845c9426f246daa2b853eab4d29b382cf52dfd2",
                 "com.docker.compose.container-number": "1",

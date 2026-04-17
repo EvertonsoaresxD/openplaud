@@ -229,8 +229,8 @@ export function TranscriptionSection() {
                             Transcrever novas gravações automaticamente
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Transcrever automaticamente as gravações quando forem
-                            sincronizadas do seu dispositivo Plaud
+                            Transcrever automaticamente as gravações quando
+                            forem sincronizadas do seu dispositivo Plaud
                         </p>
                     </div>
                     <Switch
@@ -280,8 +280,8 @@ export function TranscriptionSection() {
                         </SelectContent>
                     </Select>
                     <p className="text-xs text-muted-foreground">
-                        Idioma a ser usado para transcrição. A detecção automática
-                        identificará o idioma automaticamente.
+                        Idioma a ser usado para transcrição. A detecção
+                        automática identificará o idioma automaticamente.
                     </p>
                 </div>
 
@@ -339,8 +339,8 @@ export function TranscriptionSection() {
                             Gerar títulos automaticamente
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Gerar automaticamente títulos descritivos a partir de
-                            transcrições usando IA
+                            Gerar automaticamente títulos descritivos a partir
+                            de transcrições usando IA
                         </p>
                     </div>
                     <Switch
@@ -366,8 +366,8 @@ export function TranscriptionSection() {
                                 Sincronizar títulos com o Plaud
                             </Label>
                             <p className="text-sm text-muted-foreground">
-                                Atualizar o nome do arquivo no seu dispositivo Plaud quando
-                                os títulos forem gerados
+                                Atualizar o nome do arquivo no seu dispositivo
+                                Plaud quando os títulos forem gerados
                             </p>
                         </div>
                         <Switch
@@ -400,8 +400,9 @@ export function TranscriptionSection() {
                         </span>
                     </div>
                     <p className="text-xs text-muted-foreground pt-2">
-                        Quando ativado, novas gravações serão prescritas automaticamente
-                        usando seu provedor de transcrição padrão após a sincronização.
+                        Quando ativado, novas gravações serão prescritas
+                        automaticamente usando seu provedor de transcrição
+                        padrão após a sincronização.
                     </p>
                 </div>
             </div>

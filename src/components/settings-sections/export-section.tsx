@@ -16,7 +16,11 @@ import { Switch } from "@/components/ui/switch";
 import { useSettings } from "@/hooks/use-settings";
 
 const exportFormatOptions = [
-    { label: "JSON", value: "json", description: "Formato de dados estruturado" },
+    {
+        label: "JSON",
+        value: "json",
+        description: "Formato de dados estruturado",
+    },
     { label: "TXT", value: "txt", description: "Formato de texto simples" },
     { label: "SRT", value: "srt", description: "Formato de legenda" },
     { label: "VTT", value: "vtt", description: "Formato de legenda WebVTT" },
@@ -182,7 +186,9 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
             </h2>
             <div className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="export-format">Formato de exportação padrão</Label>
+                    <Label htmlFor="export-format">
+                        Formato de exportação padrão
+                    </Label>
                     <Select
                         value={defaultExportFormat}
                         onValueChange={(value) => {
@@ -229,7 +235,8 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                             </span>
                         </div>
                         <p className="text-sm text-muted-foreground">
-                            Exportar gravações automaticamente quando forem sincronizadas
+                            Exportar gravações automaticamente quando forem
+                            sincronizadas
                         </p>
                     </div>
                     <Switch
@@ -318,7 +325,8 @@ export function ExportSection({ onReRunOnboarding }: ExportSectionProps) {
                         Refazer o Onboarding
                     </Button>
                     <p className="text-xs text-muted-foreground">
-                        Redefine o onboarding para vê-lo novamente em sua próxima visita
+                        Redefine o onboarding para vê-lo novamente em sua
+                        próxima visita
                     </p>
                     <div className="flex gap-2 pt-2">
                         <Button

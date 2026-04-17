@@ -144,7 +144,8 @@ export function NotificationsSection() {
             console.error("Error sending test email:", err);
             setTestEmailStatus({
                 type: "error",
-                message: "Falha ao enviar e-mail de teste. Por favor, tente novamente.",
+                message:
+                    "Falha ao enviar e-mail de teste. Por favor, tente novamente.",
             });
         } finally {
             setIsSendingTestEmail(false);
@@ -175,7 +176,8 @@ export function NotificationsSection() {
                             Notificações do navegador
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Mostrar notificações no navegador para novas gravações e eventos de sincronização
+                            Mostrar notificações no navegador para novas
+                            gravações e eventos de sincronização
                         </p>
                     </div>
                     <Switch
@@ -265,7 +267,8 @@ export function NotificationsSection() {
                             Notificações push Bark
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Enviar notificações push via Bark para novas gravações
+                            Enviar notificações push via Bark para novas
+                            gravações
                         </p>
                     </div>
                     <Switch
@@ -278,7 +281,9 @@ export function NotificationsSection() {
 
                 {barkNotifications && (
                     <div className="space-y-2">
-                        <Label htmlFor="bark-push-url">URL de push do Bark</Label>
+                        <Label htmlFor="bark-push-url">
+                            URL de push do Bark
+                        </Label>
                         <Input
                             id="bark-push-url"
                             type="url"

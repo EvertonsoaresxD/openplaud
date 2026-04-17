@@ -26,7 +26,8 @@ const syncIntervalPresets = [
 
 const getSyncIntervalLabel = (value: number) => {
     return (
-        syncIntervalPresets.find((p) => p.value === value)?.label || "Personalizado"
+        syncIntervalPresets.find((p) => p.value === value)?.label ||
+        "Personalizado"
     );
 };
 
@@ -167,7 +168,9 @@ export function SyncSection() {
                 {autoSyncEnabled && (
                     <>
                         <div className="space-y-2">
-                            <Label htmlFor="sync-interval">Intervalo de sincronização</Label>
+                            <Label htmlFor="sync-interval">
+                                Intervalo de sincronização
+                            </Label>
                             <Select
                                 value={syncInterval.toString()}
                                 onValueChange={(value) => {
@@ -199,7 +202,8 @@ export function SyncSection() {
                                 </SelectContent>
                             </Select>
                             <p className="text-xs text-muted-foreground">
-                                Com que frequência sincronizar as gravações automaticamente
+                                Com que frequência sincronizar as gravações
+                                automaticamente
                             </p>
                         </div>
 
@@ -212,7 +216,8 @@ export function SyncSection() {
                                     Sincronizar ao carregar o aplicativo
                                 </Label>
                                 <p className="text-sm text-muted-foreground">
-                                    Sincronizar automaticamente quando o aplicativo é carregado pela primeira vez
+                                    Sincronizar automaticamente quando o
+                                    aplicativo é carregado pela primeira vez
                                 </p>
                             </div>
                             <Switch
@@ -237,7 +242,8 @@ export function SyncSection() {
                                     Sincronizar na visibilidade da aba
                                 </Label>
                                 <p className="text-sm text-muted-foreground">
-                                    Sincronizar quando você retornar à aba do aplicativo
+                                    Sincronizar quando você retornar à aba do
+                                    aplicativo
                                 </p>
                             </div>
                             <Switch
@@ -264,7 +270,8 @@ export function SyncSection() {
                             Mostrar notificações de sincronização
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Exibir notificações quando a sincronização for concluída
+                            Exibir notificações quando a sincronização for
+                            concluída
                         </p>
                     </div>
                     <Switch

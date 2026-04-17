@@ -30,13 +30,13 @@ export async function POST(request: Request) {
         const [credentials] = await db
             .select()
             .from(apiCredentials)
-            .where(
-                eq(apiCredentials.userId, session.user.id)
-            )
+            .where(eq(apiCredentials.userId, session.user.id))
             .limit(1);
 
         if (!credentials) {
-            return new Response("No API configured for AI Chat", { status: 400 });
+            return new Response("No API configured for AI Chat", {
+                status: 400,
+            });
         }
 
         const apiKey = decrypt(credentials.apiKey);
@@ -57,11 +57,14 @@ export async function POST(request: Request) {
         const relevantChunks = await db
             .select({
                 text: transcriptionChunks.text,
-                similarity: cosineDistance(transcriptionChunks.embedding, queryEmbedding),
+                similarity: cosineDistance(
+                    transcriptionChunks.embedding,
+                    queryEmbedding,
+                ),
             })
             .from(transcriptionChunks)
             .where(eq(transcriptionChunks.userId, session.user.id))
-            .orderBy(t => t.similarity)
+            .orderBy((t) => t.similarity)
             .limit(8); // Top 8 relevant chunks
 
         const contextText = relevantChunks
@@ -92,7 +95,7 @@ ${contextText}`;
 
         return NextResponse.json({
             response: completion.choices[0].message.content,
-            contextsFound: relevantChunks.length
+            contextsFound: relevantChunks.length,
         });
     } catch (error) {
         console.error("AI Chat Error:", error);

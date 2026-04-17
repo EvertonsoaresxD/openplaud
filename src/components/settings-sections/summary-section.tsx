@@ -113,8 +113,9 @@ export function SummarySection() {
                         </SelectContent>
                     </Select>
                     <p className="text-xs text-muted-foreground">
-                        A predefinição de prompt padrão usada ao gerar resumos. 
-                        Você pode substituir esta configuração individualmente por gravação.
+                        A predefinição de prompt padrão usada ao gerar resumos.
+                        Você pode substituir esta configuração individualmente
+                        por gravação.
                     </p>
                 </div>
             </div>

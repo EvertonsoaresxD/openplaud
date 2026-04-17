@@ -165,7 +165,11 @@ export function ProvidersSection({
     };
 
     const handleDeleteCustomPrompt = async (id: string) => {
-        if (!confirm("Tem certeza de que deseja excluir este prompt personalizado?")) {
+        if (
+            !confirm(
+                "Tem certeza de que deseja excluir este prompt personalizado?",
+            )
+        ) {
             return;
         }
 
@@ -284,7 +288,8 @@ export function ProvidersSection({
                                     Nenhum provedor configurado
                                 </h3>
                                 <p className="text-sm text-muted-foreground mb-4">
-                                    Adicione um provedor de IA para habilitar a transcrição
+                                    Adicione um provedor de IA para habilitar a
+                                    transcrição
                                 </p>
                                 <Button
                                     onClick={() => setIsAddProviderOpen(true)}
@@ -398,7 +403,8 @@ export function ProvidersSection({
                                                         key={preset.id}
                                                         value={preset.id}
                                                     >
-                                                        {preset.name} (Predefinição)
+                                                        {preset.name}{" "}
+                                                        (Predefinição)
                                                     </SelectItem>
                                                 ),
                                             )}
@@ -407,13 +413,15 @@ export function ProvidersSection({
                                                     key={prompt.id}
                                                     value={prompt.id}
                                                 >
-                                                    {prompt.name} (Personalizado)
+                                                    {prompt.name}{" "}
+                                                    (Personalizado)
                                                 </SelectItem>
                                             ))}
                                         </SelectContent>
                                     </Select>
                                     <p className="text-xs text-muted-foreground">
-                                        Selecione qual prompt usar para a geração de títulos
+                                        Selecione qual prompt usar para a
+                                        geração de títulos
                                     </p>
                                 </div>
 
@@ -491,7 +499,8 @@ export function ProvidersSection({
                                     </div>
                                     {customPrompts.length === 0 ? (
                                         <p className="text-sm text-muted-foreground text-center py-4">
-                                            Nenhum prompt personalizado ainda. Crie um para começar.
+                                            Nenhum prompt personalizado ainda.
+                                            Crie um para começar.
                                         </p>
                                     ) : (
                                         <div className="space-y-2">
@@ -619,11 +628,13 @@ export function ProvidersSection({
                                     : "Criar Prompt Personalizado"}
                             </DialogTitle>
                             <DialogDescription>
-                                Crie um prompt personalizado para a geração de títulos. Use{" "}
+                                Crie um prompt personalizado para a geração de
+                                títulos. Use{" "}
                                 <code className="px-1 py-0.5 bg-muted rounded">
                                     {"{transcription}"}
                                 </code>{" "}
-                                como um espaço reservado para o texto da transcrição.
+                                como um espaço reservado para o texto da
+                                transcrição.
                             </DialogDescription>
                             <div className="space-y-4 mt-4">
                                 <div className="space-y-2">

@@ -409,8 +409,8 @@ export function TranscriptionPanel({
                             <div className="flex flex-col items-center justify-center py-8 text-center">
                                 <ListChecks className="w-10 h-10 text-muted-foreground mb-3" />
                                 <p className="text-sm text-muted-foreground">
-                                    Nenhum resumo ainda. Clique em "Resumir" para
-                                    gerar um.
+                                    Nenhum resumo ainda. Clique em "Resumir"
+                                    para gerar um.
                                 </p>
                             </div>
                         )}

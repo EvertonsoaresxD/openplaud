@@ -131,7 +131,8 @@ export function StorageSection() {
                     </>
                 )}
                 <p className="text-xs text-muted-foreground pt-2 border-t">
-                    O armazenamento é configurado no nível da instância através de variáveis de ambiente.
+                    O armazenamento é configurado no nível da instância através
+                    de variáveis de ambiente.
                 </p>
             </div>
 
@@ -142,7 +143,8 @@ export function StorageSection() {
                             Deletar gravações antigas automaticamente
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Deletar automaticamente gravações mais antigas que o período de retenção
+                            Deletar automaticamente gravações mais antigas que o
+                            período de retenção
                         </p>
                     </div>
                     <Switch
@@ -199,7 +201,8 @@ export function StorageSection() {
                             placeholder="30"
                         />
                         <p className="text-xs text-muted-foreground">
-                            Gravações mais antigas que isso serão deletadas automaticamente (1-365 dias)
+                            Gravações mais antigas que isso serão deletadas
+                            automaticamente (1-365 dias)
                         </p>
                     </div>
                 )}

@@ -21,6 +21,7 @@ export function Footer() {
                         <div className="flex flex-col items-center md:items-start gap-1">
                             <div className="flex items-center gap-2 text-xs text-muted-foreground/80 font-mono">
                                 <Logo className="size-4" />
+                                <span>
                                     © {currentYear}{" "}
                                     <Link
                                         href="https://openplaud.com"

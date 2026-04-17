@@ -109,7 +109,9 @@ export function PlaybackSection() {
                     const prev = previousValues.autoPlayNext;
                     if (typeof prev === "boolean") setAutoPlayNext(prev);
                 }
-                toast.error("Falha ao salvar configurações. Mudanças revertidas.");
+                toast.error(
+                    "Falha ao salvar configurações. Mudanças revertidas.",
+                );
             }
         };
 
@@ -206,7 +208,8 @@ export function PlaybackSection() {
                             Tocar a próxima gravação automaticamente
                         </Label>
                         <p className="text-sm text-muted-foreground">
-                            Reproduzir automaticamente a próxima gravação quando a atual terminar
+                            Reproduzir automaticamente a próxima gravação quando
+                            a atual terminar
                         </p>
                     </div>
                     <Switch
@@ -228,7 +231,9 @@ export function PlaybackSection() {
                     <Label className="text-base">Atalhos de Teclado</Label>
                     <div className="space-y-1.5 text-sm">
                         <div className="flex justify-between">
-                            <span className="text-muted-foreground">Espaço</span>
+                            <span className="text-muted-foreground">
+                                Espaço
+                            </span>
                             <span>Reproduzir/Pausar</span>
                         </div>
                         <div className="flex justify-between">

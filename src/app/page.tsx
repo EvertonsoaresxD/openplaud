@@ -93,7 +93,10 @@ export default async function HomePage() {
                         </h1>
 
                         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed">
-                            Pare de pagar assinaturas mensais. Use suas próprias chaves de API, armazene seus dados localmente e obtenha transcrições profissionais com total privacidade.
+                            Pare de pagar assinaturas mensais. Use suas próprias
+                            chaves de API, armazene seus dados localmente e
+                            obtenha transcrições profissionais com total
+                            privacidade.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
@@ -102,8 +105,7 @@ export default async function HomePage() {
                                     size="lg"
                                     className="w-full sm:w-auto gap-2 bg-primary text-primary-foreground hover:bg-primary/90 border-primary/50 h-14 px-8 text-lg shadow-[0_0_20px_rgba(var(--primary),0.3)]"
                                 >
-                                    Começar{" "}
-                                    <ArrowRight className="size-5" />
+                                    Começar <ArrowRight className="size-5" />
                                 </MetalButton>
                             </Link>
                             <Link
@@ -342,39 +344,43 @@ export default async function HomePage() {
                                                             </span>{" "}
                                                             Certo, vamos
                                                             começar. O principal
-                                                            objetivo para esta semana
-                                                            é finalizar o
+                                                            objetivo para esta
+                                                            semana é finalizar o
                                                             roadmap do Q3.
                                                             <br />
                                                             <br />
                                                             <span className="text-foreground font-medium">
                                                                 Orador B:
                                                             </span>{" "}
-                                                            Atualizei o
-                                                            quadro do Jira com as
-                                                            novas solicitações de
+                                                            Atualizei o quadro
+                                                            do Jira com as novas
+                                                            solicitações de
                                                             recursos recebidas
-                                                            nas ligações com clientes.
+                                                            nas ligações com
+                                                            clientes.
                                                             <br />
                                                             <br />
                                                             <span className="text-foreground font-medium">
                                                                 Orador A:
                                                             </span>{" "}
-                                                            Ótimo. Precisamos nos
-                                                            focar na estabilidade
-                                                            da integração da API. Tem
-                                                            sido um problema recorrente...
+                                                            Ótimo. Precisamos
+                                                            nos focar na
+                                                            estabilidade da
+                                                            integração da API.
+                                                            Tem sido um problema
+                                                            recorrente...
                                                         </p>
                                                     </div>
                                                     <div className="flex items-center gap-4 text-xs text-muted-foreground pt-3 border-t mt-3">
                                                         <div className="flex items-center gap-1">
                                                             <Languages className="w-3 h-3" />
                                                             <span>
-                                                                Idioma:
-                                                                Inglês
+                                                                Idioma: Inglês
                                                             </span>
                                                         </div>
-                                                        <div>4.281 palavras</div>
+                                                        <div>
+                                                            4.281 palavras
+                                                        </div>
                                                         <div className="flex items-center gap-1 ml-auto text-primary">
                                                             <Sparkles className="w-3 h-3" />
                                                             <span>
@@ -401,8 +407,8 @@ export default async function HomePage() {
                             </h2>
                             <p className="text-muted-foreground text-lg">
                                 Nós construímos isso porque queríamos controle
-                                sobre nossos próprios dados. Veja o porquê 
-                                você deveria migrar.
+                                sobre nossos próprios dados. Veja o porquê você
+                                deveria migrar.
                             </p>
                         </div>
 
@@ -501,7 +507,8 @@ export default async function HomePage() {
                                             <Check className="size-3" />
                                         </div>
                                         <span className="font-medium">
-                                            100% de minutos limitados pelo seu uso
+                                            100% de minutos limitados pelo seu
+                                            uso
                                         </span>
                                     </li>
                                     <li className="flex items-center gap-3">
@@ -509,7 +516,8 @@ export default async function HomePage() {
                                             <Check className="size-3" />
                                         </div>
                                         <span className="font-medium">
-                                            Tudo gravado seguro e com backup onde você escolher
+                                            Tudo gravado seguro e com backup
+                                            onde você escolher
                                         </span>
                                     </li>
                                     <li className="flex items-center gap-3">
@@ -517,7 +525,8 @@ export default async function HomePage() {
                                             <Check className="size-3" />
                                         </div>
                                         <span className="font-medium">
-                                            Use DeepSeek, Llama, Gemini, o que vier!
+                                            Use DeepSeek, Llama, Gemini, o que
+                                            vier!
                                         </span>
                                     </li>
                                 </ul>
@@ -540,8 +549,9 @@ export default async function HomePage() {
                                     Implante Rápido
                                 </h2>
                                 <p className="text-zinc-400 text-lg">
-                                    Rode de casa em segundos com o seu própro Docker Compose. O OpenPlaud
-                                    inclusive cuida das atualizações do BD Sozinho.
+                                    Rode de casa em segundos com o seu própro
+                                    Docker Compose. O OpenPlaud inclusive cuida
+                                    das atualizações do BD Sozinho.
                                 </p>
                                 <div className="flex flex-wrap gap-4">
                                     <div className="flex items-center gap-2 text-sm text-zinc-500">

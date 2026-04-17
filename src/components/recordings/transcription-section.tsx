@@ -413,8 +413,8 @@ export function TranscriptionSection({
                             <Panel variant="inset" className="text-center py-8">
                                 <ListChecks className="w-10 h-10 text-muted-foreground mx-auto mb-3" />
                                 <p className="text-sm text-muted-foreground">
-                                    Sem resumo ainda. Clique em &quot;Resumir&quot;
-                                    para gerar um.
+                                    Sem resumo ainda. Clique em
+                                    &quot;Resumir&quot; para gerar um.
                                 </p>
                             </Panel>
                         )}

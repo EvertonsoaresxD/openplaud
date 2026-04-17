@@ -2,7 +2,12 @@ import { and, eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 import { db } from "@/db";
-import { apiCredentials, recordings, transcriptions, transcriptionChunks } from "@/db/schema";
+import {
+    apiCredentials,
+    recordings,
+    transcriptionChunks,
+    transcriptions,
+} from "@/db/schema";
 import { auth } from "@/lib/auth";
 import { decrypt } from "@/lib/encryption";
 import { createUserStorageProvider } from "@/lib/storage/factory";
@@ -155,33 +160,48 @@ export async function POST(
                 })
                 .where(eq(transcriptions.id, existingTranscription.id));
         } else {
-            const [inserted] = await db.insert(transcriptions).values({
-                recordingId: id,
-                userId: session.user.id,
-                text: transcriptionText,
-                detectedLanguage,
-                transcriptionType: "server",
-                provider: credentials.provider,
-                model,
-            }).returning({ id: transcriptions.id });
+            const [inserted] = await db
+                .insert(transcriptions)
+                .values({
+                    recordingId: id,
+                    userId: session.user.id,
+                    text: transcriptionText,
+                    detectedLanguage,
+                    transcriptionType: "server",
+                    provider: credentials.provider,
+                    model,
+                })
+                .returning({ id: transcriptions.id });
             transcriptionId = inserted.id;
         }
 
         // Generate and store embeddings for RAG
         try {
             // Simple semantic chunking splitting by sentences
-            const chunks = transcriptionText.match(/[^.!?]+[.!?]+/g) || [transcriptionText];
-            
+            const chunks = transcriptionText.match(/[^.!?]+[.!?]+/g) || [
+                transcriptionText,
+            ];
+
             // Delete old chunks if updating
             if (existingTranscription) {
-                await db.delete(transcriptionChunks).where(eq(transcriptionChunks.transcriptionId, transcriptionId));
+                await db
+                    .delete(transcriptionChunks)
+                    .where(
+                        eq(
+                            transcriptionChunks.transcriptionId,
+                            transcriptionId,
+                        ),
+                    );
             }
 
             if (chunks.length > 0 && transcriptionText.trim() !== "") {
                 const maxBatchSize = 100;
-                
+
                 for (let i = 0; i < chunks.length; i += maxBatchSize) {
-                    const batch = chunks.slice(i, i + maxBatchSize).map(c => c.trim()).filter(c => c.length > 5); // Ignore tiny artifacts
+                    const batch = chunks
+                        .slice(i, i + maxBatchSize)
+                        .map((c) => c.trim())
+                        .filter((c) => c.length > 5); // Ignore tiny artifacts
                     if (batch.length === 0) continue;
 
                     const embeddingResponse = await openai.embeddings.create({

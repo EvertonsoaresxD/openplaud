@@ -231,8 +231,8 @@ export function OnboardingDialog({
                                     Seu Hub de Gravações com IA
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    A OpenPlaud te ajuda a gerenciar e transcrever
-                                    suas gravações com IA. Vamos
+                                    A OpenPlaud te ajuda a gerenciar e
+                                    transcrever suas gravações com IA. Vamos
                                     configurar a sua conta.
                                 </p>
                             </div>
@@ -247,8 +247,9 @@ export function OnboardingDialog({
                                     </CardHeader>
                                     <CardContent>
                                         <p className="text-sm text-muted-foreground">
-                                            Vincule seu botão Plaud para sincronizar
-                                            suas gravações de modo automático.
+                                            Vincule seu botão Plaud para
+                                            sincronizar suas gravações de modo
+                                            automático.
                                         </p>
                                     </CardContent>
                                 </Card>
@@ -262,8 +263,8 @@ export function OnboardingDialog({
                                     </CardHeader>
                                     <CardContent>
                                         <p className="text-sm text-muted-foreground">
-                                            Ajuste as chaves de API da LLM
-                                            e transcreva local ou remotamente.
+                                            Ajuste as chaves de API da LLM e
+                                            transcreva local ou remotamente.
                                         </p>
                                     </CardContent>
                                 </Card>
@@ -277,8 +278,8 @@ export function OnboardingDialog({
                                     </CardHeader>
                                     <CardContent>
                                         <p className="text-sm text-muted-foreground">
-                                            Tudo pronto! Pressione o botão para gravar
-                                            e confira os resultados.
+                                            Tudo pronto! Pressione o botão para
+                                            gravar e confira os resultados.
                                         </p>
                                     </CardContent>
                                 </Card>
@@ -311,8 +312,8 @@ export function OnboardingDialog({
                                                     Dispositivo Conectado
                                                 </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    Um Plaud já foi conectado
-                                                    à sua conta
+                                                    Um Plaud já foi conectado à
+                                                    sua conta
                                                 </p>
                                             </div>
                                             <Button
@@ -404,11 +405,14 @@ export function OnboardingDialog({
                                                 disabled={isLoading}
                                             />
                                             <p className="text-xs text-muted-foreground">
-                                                Acesse plaud.ai por um computador, 
-                                                aperte (F12) abrindo console → Network (Rede), 
-                                                atualize a página e localize o cabeçalho "Authorization" 
-                                                nas requests para a API. Copie aquele calor que inicia
-                                                como "Bearer ey...".
+                                                Acesse plaud.ai por um
+                                                computador, aperte (F12) abrindo
+                                                console → Network (Rede),
+                                                atualize a página e localize o
+                                                cabeçalho "Authorization" nas
+                                                requests para a API. Copie
+                                                aquele calor que inicia como
+                                                "Bearer ey...".
                                             </p>
                                         </div>
 
@@ -454,8 +458,8 @@ export function OnboardingDialog({
                                                     IA Configurada!
                                                 </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    Você detectou uma chave
-                                                    para processar textos.
+                                                    Você detectou uma chave para
+                                                    processar textos.
                                                 </p>
                                             </div>
                                         </div>
@@ -466,8 +470,8 @@ export function OnboardingDialog({
                                     <CardContent className="pt-6 space-y-4">
                                         <p className="text-sm text-muted-foreground">
                                             Você pode ajustar a sua chave depois
-                                            no menu Configurações. Isto habilitará
-                                            A automação dos serviços.
+                                            no menu Configurações. Isto
+                                            habilitará A automação dos serviços.
                                         </p>
                                         <Button
                                             onClick={() => {
@@ -496,8 +500,8 @@ export function OnboardingDialog({
                                     Tudo Pronto!
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Comece gravando os áudios e nós
-                                    gerenciamos todo o restante!
+                                    Comece gravando os áudios e nós gerenciamos
+                                    todo o restante!
                                 </p>
                             </div>
 
@@ -520,11 +524,13 @@ export function OnboardingDialog({
                                             <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
                                             <div>
                                                 <p className="font-medium">
-                                                    Diários via Inteligência Artificial
+                                                    Diários via Inteligência
+                                                    Artificial
                                                 </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    Utilize das potentes IA locais ou remotas 
-                                                    na transcrição
+                                                    Utilize das potentes IA
+                                                    locais ou remotas na
+                                                    transcrição
                                                 </p>
                                             </div>
                                         </div>
@@ -535,7 +541,8 @@ export function OnboardingDialog({
                                                     Personalize livremente
                                                 </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    Altere o tema, o bucket e mais na aba Ajustes.
+                                                    Altere o tema, o bucket e
+                                                    mais na aba Ajustes.
                                                 </p>
                                             </div>
                                         </div>

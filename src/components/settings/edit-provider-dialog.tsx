@@ -242,9 +242,10 @@ export function EditProviderDialog({
                         <div className="text-xs text-muted-foreground flex items-center gap-2">
                             <Shield className="w-3.5 h-3.5 shrink-0" />
                             <span>
-                                Por segurança, a chave da API salva nunca é exibida.
-                                Deixe em branco para manter sua chave atual, ou
-                                insira uma nova chave para substituí-la.
+                                Por segurança, a chave da API salva nunca é
+                                exibida. Deixe em branco para manter sua chave
+                                atual, ou insira uma nova chave para
+                                substituí-la.
                             </span>
                         </div>
                     </div>
@@ -316,7 +317,9 @@ export function EditProviderDialog({
                             disabled={isLoading}
                             className="flex-1"
                         >
-                            {isLoading ? "Atualizando..." : "Atualizar Provedor"}
+                            {isLoading
+                                ? "Atualizando..."
+                                : "Atualizar Provedor"}
                         </MetalButton>
                     </div>
                 </form>

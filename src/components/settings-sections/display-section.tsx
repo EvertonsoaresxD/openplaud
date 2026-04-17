@@ -148,7 +148,9 @@ export function DisplaySection() {
                     const prev = previousValues.theme;
                     if (typeof prev === "string") setTheme(prev);
                 }
-                toast.error("Falha ao salvar configurações. Mudanças revertidas.");
+                toast.error(
+                    "Falha ao salvar configurações. Mudanças revertidas.",
+                );
             }
         };
 
@@ -175,7 +177,9 @@ export function DisplaySection() {
             </h2>
             <div className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="date-time-format">Formato de data/hora</Label>
+                    <Label htmlFor="date-time-format">
+                        Formato de data/hora
+                    </Label>
                     <Select
                         value={dateTimeFormat}
                         onValueChange={(value) => {
@@ -212,9 +216,7 @@ export function DisplaySection() {
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="sort-order">
-                        Ordem de classificação
-                    </Label>
+                    <Label htmlFor="sort-order">Ordem de classificação</Label>
                     <Select
                         value={recordingListSortOrder}
                         onValueChange={(value) => {

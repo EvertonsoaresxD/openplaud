@@ -84,8 +84,16 @@ const settingsNav = [
         id: "notifications" as SettingsSection,
         icon: Bell,
     },
-    { name: "Exportar/Backup", id: "export" as SettingsSection, icon: Download },
-    { name: "Armazenamento", id: "storage" as SettingsSection, icon: HardDrive },
+    {
+        name: "Exportar/Backup",
+        id: "export" as SettingsSection,
+        icon: Download,
+    },
+    {
+        name: "Armazenamento",
+        id: "storage" as SettingsSection,
+        icon: HardDrive,
+    },
 ];
 
 const STORAGE_KEY = "settings-last-section";
@@ -226,7 +234,9 @@ export function SettingsDialog({
             <DialogContent className="overflow-hidden p-0 md:max-h-[600px] md:max-w-[800px] lg:max-w-[900px]">
                 <DialogTitle className="sr-only">Configurações</DialogTitle>
                 <DialogDescription className="sr-only">
-                    Personalize suas configurações aqui. Use as setas do teclado para navegar pelas seções, Enter ou Espaço para selecionar e Esc para fechar.
+                    Personalize suas configurações aqui. Use as setas do teclado
+                    para navegar pelas seções, Enter ou Espaço para selecionar e
+                    Esc para fechar.
                 </DialogDescription>
                 <SidebarProvider className="items-start">
                     <Sidebar className="hidden md:flex">
@@ -321,7 +331,8 @@ export function SettingsDialog({
                                         aria-label="Selecione a seção de configurações"
                                     >
                                         <SelectValue>
-                                            {activeNavItem?.name || "Configurações"}
+                                            {activeNavItem?.name ||
+                                                "Configurações"}
                                         </SelectValue>
                                     </SelectTrigger>
                                     <SelectContent>

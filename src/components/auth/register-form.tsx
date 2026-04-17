@@ -51,9 +51,7 @@ export function RegisterForm() {
             router.refresh();
         } catch (error) {
             const message =
-                error instanceof Error
-                    ? error.message
-                    : "Falha ao criar conta";
+                error instanceof Error ? error.message : "Falha ao criar conta";
             toast.error(message);
         } finally {
             setIsLoading(false);

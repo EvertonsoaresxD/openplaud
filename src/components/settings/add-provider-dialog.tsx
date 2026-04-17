@@ -173,7 +173,8 @@ export function AddProviderDialog({
                             id="apiKey"
                             type="password"
                             placeholder={
-                                selectedPreset?.placeholder || "Sua chave da API"
+                                selectedPreset?.placeholder ||
+                                "Sua chave da API"
                             }
                             value={apiKey}
                             onChange={(e) => setApiKey(e.target.value)}
@@ -250,7 +251,9 @@ export function AddProviderDialog({
                             disabled={isLoading}
                             className="flex-1"
                         >
-                            {isLoading ? "Adicionando..." : "Adicionar Provedor"}
+                            {isLoading
+                                ? "Adicionando..."
+                                : "Adicionar Provedor"}
                         </MetalButton>
                     </div>
                 </form>
