@@ -1,104 +1,104 @@
-import { cosineDistance, eq } from "drizzle-orm";
-import { NextResponse } from "next/server";
-import { OpenAI } from "openai";
+import { cosineDistance, desc, eq, sql } from "drizzle-orm";
+import type { NextRequest } from "next/server";
+import OpenAI from "openai";
 import { db } from "@/db";
-import { apiCredentials, transcriptionChunks } from "@/db/schema";
-import { auth } from "@/lib/auth";
-import { decrypt } from "@/lib/encryption";
+import { transcriptionChunks, transcriptions } from "@/db/schema";
 
-export async function POST(request: Request) {
+const openai = new OpenAI();
+
+export async function POST(req: NextRequest) {
     try {
-        const session = await auth.api.getSession({
-            headers: request.headers,
-        });
+        const { messages } = await req.json();
 
-        if (!session?.user) {
-            return new Response("Unauthorized", { status: 401 });
-        }
+        // Extrai a última mensagem do usuário
+        const lastUserMessage = messages
+            .slice()
+            .reverse()
+            .find((m: any) => m.role === "user");
 
-        const body = await request.json().catch(() => ({}));
-        const messages = body.messages || [];
-
-        if (messages.length === 0) {
-            return new Response("Messages are required", { status: 400 });
-        }
-
-        // Get the latest query
-        const query = messages[messages.length - 1].content;
-
-        // Fetch OpenAI credentials configured by the user
-        const [credentials] = await db
-            .select()
-            .from(apiCredentials)
-            .where(eq(apiCredentials.userId, session.user.id))
-            .limit(1);
-
-        if (!credentials) {
-            return new Response("No API configured for AI Chat", {
+        if (!lastUserMessage) {
+            return new Response("Mensagem do usuário não encontrada", {
                 status: 400,
             });
         }
 
-        const apiKey = decrypt(credentials.apiKey);
-        const openai = new OpenAI({
-            apiKey,
-            baseURL: credentials.baseUrl || undefined,
-        });
-
-        // 1. Generate local embedding for user query
-        const queryEmbeddingRes = await openai.embeddings.create({
+        // 1. Gera o embedding da pergunta do usuário
+        const embeddingResponse = await openai.embeddings.create({
             model: "text-embedding-3-small",
-            input: query,
+            input: lastUserMessage.content,
         });
-        const queryEmbedding = queryEmbeddingRes.data[0].embedding;
+        const queryEmbedding = embeddingResponse.data[0].embedding;
 
-        // 2. Perform RAG Vector Search
-        // cosineDistance returns a value from 0 to 2, where 0 is identical and 2 is opposite.
+        // 2. Busca os chunks mais relevantes usando pgvector
+        const similarity = sql<number>`1 - (${cosineDistance(
+            transcriptionChunks.embedding,
+            queryEmbedding,
+        )})`;
+
+        // Ajuste no threshold e limite (ajuste dependendo da densidade dos seus chunks e do overlap)
         const relevantChunks = await db
             .select({
-                text: transcriptionChunks.text,
-                similarity: cosineDistance(
-                    transcriptionChunks.embedding,
-                    queryEmbedding,
-                ),
+                content: transcriptionChunks.text,
+                recordingId: transcriptions.recordingId,
+                similarity: similarity,
             })
             .from(transcriptionChunks)
-            .where(eq(transcriptionChunks.userId, session.user.id))
-            .orderBy((t) => t.similarity)
-            .limit(8); // Top 8 relevant chunks
+            .innerJoin(
+                transcriptions,
+                eq(transcriptionChunks.transcriptionId, transcriptions.id),
+            )
+            .where(sql`${similarity} > 0.4`) // Busca documentos com similaridade > 0.4
+            .orderBy((t) => desc(t.similarity))
+            .limit(10); // Aumento do limite para compensar os chunks menores
 
-        const contextText = relevantChunks
-            .map((chunk, i) => `[Context ${i + 1}]: ${chunk.text}`)
-            .join("\n\n");
+        // 3. Monta o contexto para o prompt
+        const systemInstruction = `Você é o assistente inteligente do OpenPlaud.
+Você tem acesso ao conhecimento das gravações do usuário através de pesquisa semântica.
+Responda de forma clara, prestativa e referencie informações do contexto fornecido quando apropriado.
+Se a informação não estiver no contexto, diga que não tem certeza baseando-se nas gravações atuais, mas tente ajudar como um assistente de IA geral se a pergunta não for estritamente sobre as gravações.
+Use marcações MD para formatar a resposta, por exemplo com listas, negritos, quebras de linhas, quando necessário para organização visual.
 
-        // 3. Inject context into system prompt
-        const systemPrompt = `Você é um assistente pessoal integrado ao gravador inteligente OpenPlaud. 
-Sua tarefa é responder as perguntas do usuário com base nas transcrições das suas reuniões e notas de voz arquivadas.
-Responda APENAS usando os CONTEXTOS ARQUIVADOS listados abaixo. Se a informação não estiver lá, diga que não há gravações que mencionem isso.
-Responda sempre em Português. Formate bonitinho.
+Contexto recuperado das gravações:
+${relevantChunks
+    .map(
+        (chunk, i) =>
+            `[Trecho ${i + 1}] (Recording ID: ${chunk.recordingId}):\n${chunk.content}`,
+    )
+    .join("\n\n")}
+`;
 
-CONTEXTOS ARQUIVADOS:
-${contextText}`;
-
-        // Modify the messages payload to include our RAG context
         const enhancedMessages = [
-            { role: "system", content: systemPrompt },
-            ...messages.slice(0, -1),
-            { role: "user", content: query },
+            { role: "system", content: systemInstruction },
+            ...messages,
         ];
 
+        // 4. Executa a geração com OpenAI via Stream Nativo
         const completion = await openai.chat.completions.create({
-            model: credentials.defaultModel || "gpt-4o-mini",
+            model: "gpt-4o-mini",
             messages: enhancedMessages,
-            // Could stream here if needed using OpenAIStream / AI SDK, keeping it standard for now
+            stream: true,
         });
 
-        return NextResponse.json({
-            response: completion.choices[0].message.content,
-            contextsFound: relevantChunks.length,
+        const stream = new ReadableStream({
+            async start(controller) {
+                for await (const chunk of completion) {
+                    const text = chunk.choices[0]?.delta?.content || "";
+                    if (text) {
+                        controller.enqueue(new TextEncoder().encode(text));
+                    }
+                }
+                controller.close();
+            },
+        });
+
+        return new Response(stream, {
+            headers: {
+                "Content-Type": "text/plain; charset=utf-8",
+                "x-contexts-found": relevantChunks.length.toString(),
+            },
         });
     } catch (error) {
-        console.error("AI Chat Error:", error);
+        console.error("Chat Error:", error);
         return new Response("Internal Server Error", { status: 500 });
     }
 }

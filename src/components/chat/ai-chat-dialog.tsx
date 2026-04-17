@@ -2,6 +2,8 @@
 
 import { Bot, Loader2, Send, Sparkles, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,9 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 
 interface Message {
+    id?: string;
     role: "user" | "assistant";
     content: string;
-    contextsFound?: number;
 }
 
 interface AiChatDialogProps {
@@ -27,6 +29,7 @@ export function AiChatDialog({ open, onOpenChange }: AiChatDialogProps) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
     const scrollRef = useRef<HTMLDivElement>(null);
 
     // Initial greeting
@@ -34,6 +37,7 @@ export function AiChatDialog({ open, onOpenChange }: AiChatDialogProps) {
         if (open && messages.length === 0) {
             setMessages([
                 {
+                    id: "greeting-1",
                     role: "assistant",
                     content:
                         "Olá! Sou seu assistente integrado. Como posso ajudar você com suas gravações hoje?",
@@ -58,14 +62,13 @@ export function AiChatDialog({ open, onOpenChange }: AiChatDialogProps) {
 
         const newMessages: Message[] = [
             ...messages,
-            { role: "user", content: userMsg },
+            { id: `user-${Date.now()}`, role: "user", content: userMsg },
         ];
 
         setMessages(newMessages);
         setIsLoading(true);
 
         try {
-            // We format messages properly for the backend endpoint
             const formattedMessages = newMessages.map((m) => ({
                 role: m.role,
                 content: m.content,
@@ -78,20 +81,35 @@ export function AiChatDialog({ open, onOpenChange }: AiChatDialogProps) {
             });
 
             if (!response.ok) {
-                const errText = await response.text();
-                throw new Error(errText || "Falha na comunicação com a IA");
+                throw new Error("Falha na comunicação com a IA");
             }
 
-            const data = await response.json();
+            if (!response.body) throw new Error("Sem resposta do servidor");
 
-            setMessages([
-                ...newMessages,
-                {
-                    role: "assistant",
-                    content: data.response,
-                    contextsFound: data.contextsFound,
-                },
+            setIsLoading(false);
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let assistantContent = "";
+            const assistantId = `assistant-${Date.now()}`;
+
+            setMessages((prev) => [
+                ...prev,
+                { id: assistantId, role: "assistant", content: "" },
             ]);
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                assistantContent += decoder.decode(value, { stream: true });
+
+                setMessages((prev) =>
+                    prev.map((m) =>
+                        m.id === assistantId
+                            ? { ...m, content: assistantContent }
+                            : m,
+                    ),
+                );
+            }
         } catch (error) {
             console.error(error);
             toast.error(
@@ -99,7 +117,6 @@ export function AiChatDialog({ open, onOpenChange }: AiChatDialogProps) {
                     ? error.message
                     : "Erro ao enviar mensagem",
             );
-        } finally {
             setIsLoading(false);
         }
     };
@@ -120,8 +137,7 @@ export function AiChatDialog({ open, onOpenChange }: AiChatDialogProps) {
                 >
                     {messages.map((msg, i) => (
                         <div
-                            // biome-ignore lint/suspicious/noArrayIndexKey: simple array render without reordering
-                            key={i}
+                            key={msg.id || i}
                             className={`flex gap-3 ${
                                 msg.role === "user"
                                     ? "justify-end"
@@ -142,20 +158,24 @@ export function AiChatDialog({ open, onOpenChange }: AiChatDialogProps) {
                                 }`}
                             >
                                 <div
-                                    className={`px-4 py-2.5 rounded-2xl whitespace-pre-wrap text-sm leading-relaxed ${
+                                    className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                                         msg.role === "user"
                                             ? "bg-primary text-primary-foreground rounded-tr-sm"
-                                            : "bg-muted text-foreground rounded-tl-sm"
+                                            : "bg-muted text-foreground rounded-tl-sm prose prose-sm max-w-none dark:prose-invert"
                                     }`}
                                 >
-                                    {msg.content}
+                                    {msg.role === "assistant" ? (
+                                        <ReactMarkdown
+                                            remarkPlugins={[remarkGfm]}
+                                        >
+                                            {msg.content}
+                                        </ReactMarkdown>
+                                    ) : (
+                                        <span className="whitespace-pre-wrap">
+                                            {msg.content}
+                                        </span>
+                                    )}
                                 </div>
-                                {msg.contextsFound !== undefined && (
-                                    <span className="text-[10px] text-muted-foreground mr-1">
-                                        Contextos analisados:{" "}
-                                        {msg.contextsFound}
-                                    </span>
-                                )}
                             </div>
 
                             {msg.role === "user" && (
@@ -166,6 +186,7 @@ export function AiChatDialog({ open, onOpenChange }: AiChatDialogProps) {
                         </div>
                     ))}
 
+                    {/* Show loader only while awaiting the first chunk from the assistant */}
                     {isLoading && (
                         <div className="flex gap-3 justify-start">
                             <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">

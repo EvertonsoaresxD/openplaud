@@ -1,5 +1,5 @@
 import { and, eq } from "drizzle-orm";
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { OpenAI } from "openai";
 import { db } from "@/db";
 import {
@@ -175,55 +175,83 @@ export async function POST(
             transcriptionId = inserted.id;
         }
 
-        // Generate and store embeddings for RAG
-        try {
-            // Simple semantic chunking splitting by sentences
-            const chunks = transcriptionText.match(/[^.!?]+[.!?]+/g) || [
-                transcriptionText,
-            ];
+        // Generate and store embeddings for RAG asynchronously
+        after(async () => {
+            try {
+                // Strategic Overlapping Chunking Strategy
+                const splitIntoChunks = (
+                    text: string,
+                    chunkSize = 800,
+                    overlap = 100,
+                ) => {
+                    const out: string[] = [];
+                    let i = 0;
+                    while (i < text.length) {
+                        let end = i + chunkSize;
+                        if (end < text.length) {
+                            const prevSpace = text.lastIndexOf(" ", end);
+                            if (prevSpace > i + overlap) {
+                                end = prevSpace;
+                            }
+                        }
+                        out.push(text.substring(i, end).trim());
+                        const nextI = end - overlap;
+                        if (nextI <= i) break; // Forward progression failsafe
+                        i = nextI;
+                    }
+                    return out;
+                };
 
-            // Delete old chunks if updating
-            if (existingTranscription) {
-                await db
-                    .delete(transcriptionChunks)
-                    .where(
-                        eq(
-                            transcriptionChunks.transcriptionId,
-                            transcriptionId,
-                        ),
-                    );
-            }
+                const chunks = splitIntoChunks(transcriptionText);
 
-            if (chunks.length > 0 && transcriptionText.trim() !== "") {
-                const maxBatchSize = 100;
-
-                for (let i = 0; i < chunks.length; i += maxBatchSize) {
-                    const batch = chunks
-                        .slice(i, i + maxBatchSize)
-                        .map((c) => c.trim())
-                        .filter((c) => c.length > 5); // Ignore tiny artifacts
-                    if (batch.length === 0) continue;
-
-                    const embeddingResponse = await openai.embeddings.create({
-                        model: "text-embedding-3-small",
-                        input: batch,
-                    });
-
-                    const chunkValues = batch.map((text, idx) => ({
-                        transcriptionId,
-                        userId: session.user.id,
-                        text,
-                        chunkIndex: i + idx,
-                        embedding: embeddingResponse.data[idx].embedding,
-                    }));
-
-                    await db.insert(transcriptionChunks).values(chunkValues);
+                // Delete old chunks if updating
+                if (existingTranscription) {
+                    await db
+                        .delete(transcriptionChunks)
+                        .where(
+                            eq(
+                                transcriptionChunks.transcriptionId,
+                                transcriptionId,
+                            ),
+                        );
                 }
+
+                if (chunks.length > 0 && transcriptionText.trim() !== "") {
+                    const maxBatchSize = 100;
+
+                    for (let i = 0; i < chunks.length; i += maxBatchSize) {
+                        const batch = chunks
+                            .slice(i, i + maxBatchSize)
+                            .map((c) => c.trim())
+                            .filter((c) => c.length > 5); // Ignore tiny artifacts
+                        if (batch.length === 0) continue;
+
+                        const embeddingResponse =
+                            await openai.embeddings.create({
+                                model: "text-embedding-3-small",
+                                input: batch,
+                            });
+
+                        const chunkValues = batch.map((text, idx) => ({
+                            transcriptionId,
+                            userId: session.user.id,
+                            text,
+                            chunkIndex: i + idx,
+                            embedding: embeddingResponse.data[idx].embedding,
+                        }));
+
+                        await db
+                            .insert(transcriptionChunks)
+                            .values(chunkValues);
+                    }
+                }
+            } catch (embeddingError) {
+                console.error(
+                    "Error generating embeddings asynchronously:",
+                    embeddingError,
+                );
             }
-        } catch (embeddingError) {
-            console.error("Error generating embeddings:", embeddingError);
-            // Non-fatal error, we still want to return the transcription successfully
-        }
+        });
 
         return NextResponse.json({
             transcription: transcriptionText,

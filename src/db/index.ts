@@ -10,8 +10,21 @@ if (!env.DATABASE_URL && !isBuild) {
     );
 }
 
-export const db = env.DATABASE_URL
-    ? drizzle(postgres(env.DATABASE_URL), { schema })
+declare global {
+    // eslint-disable-next-line no-var
+    var postgresClient: postgres.Sql | undefined;
+}
+
+const client = env.DATABASE_URL
+    ? globalThis.postgresClient || postgres(env.DATABASE_URL)
+    : undefined;
+
+if (client && process.env.NODE_ENV !== "production") {
+    globalThis.postgresClient = client;
+}
+
+export const db = client
+    ? drizzle(client, { schema })
     : ({} as ReturnType<typeof drizzle<typeof schema>>);
 
 export { schema };
