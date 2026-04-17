@@ -81,7 +81,15 @@ export function AiChatDialog({ open, onOpenChange }: AiChatDialogProps) {
             });
 
             if (!response.ok) {
-                throw new Error("Falha na comunicação com a IA");
+                // Try to get actual error message from server
+                let errorMsg = "Falha na comunicação com a IA";
+                try {
+                    const errBody = await response.json();
+                    if (errBody?.error) errorMsg = errBody.error;
+                } catch {
+                    // ignore parse errors
+                }
+                throw new Error(errorMsg);
             }
 
             if (!response.body) throw new Error("Sem resposta do servidor");

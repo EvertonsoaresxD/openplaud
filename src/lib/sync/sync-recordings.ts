@@ -93,12 +93,18 @@ async function processRecording(
 
         const versionKey = plaudRecording.version_ms.toString();
 
-        // Skip if already synced with same version
+        // Skip if already synced with same version AND file exists on disk
         if (
             existingRecording &&
             existingRecording.plaudVersion === versionKey
         ) {
-            return { status: "skipped" };
+            // Verify the file is actually present in storage
+            try {
+                await storage.downloadFile(existingRecording.storagePath);
+                return { status: "skipped" };
+            } catch {
+                // File missing even though DB says it's synced — fall through to re-download
+            }
         }
 
         // Download the audio file
