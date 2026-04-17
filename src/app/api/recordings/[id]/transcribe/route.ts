@@ -37,6 +37,8 @@ export async function POST(
         const overrideProviderId = body.providerId as string | undefined;
         const overrideModel = body.model as string | undefined;
 
+        console.log(`[DEBUG TRANSCRIBE] Searching for recording id: "${id}", userId: "${session.user.id}"`);
+
         const [recording] = await db
             .select()
             .from(recordings)
@@ -48,9 +50,11 @@ export async function POST(
             )
             .limit(1);
 
+        console.log(`[DEBUG TRANSCRIBE] Selected recording result:`, recording);
+
         if (!recording) {
             return NextResponse.json(
-                { error: "Recording not found" },
+                { error: "Recording not found", details: { searchedId: id, searchedUser: session.user.id } },
                 { status: 404 },
             );
         }
